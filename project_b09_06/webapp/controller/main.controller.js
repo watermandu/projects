@@ -9,7 +9,7 @@ sap.ui.define([
 
         return Controller.extend("projectb0906.controller.main", {
             onInit: function () {
-
+// 
             }, 
             
             onValueHelp: function () {
