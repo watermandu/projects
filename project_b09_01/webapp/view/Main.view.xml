@@ -1,0 +1,45 @@
+<mvc:View  controllerName="sync.projectb0901.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:t='sap.ui.table' 
+    >
+            <Page id="page" title="Title" >  
+        <content>
+        <!-- <table:Table fixedColumnCount="10" fixedRowCount="10" showNoData="false"></table:Table> -->
+        
+        <!-- <Text text='hello world'/>
+        <Button text='MyButton' type="Emphasized"/>
+         -->
+        <VBox>
+        <Button text="MyButton" type="Attention" press="onClick"></Button> 
+        <Text id='idText' text="hello" textAlign="Center"></Text>
+        <Input id='idInput' fieldWidth="10%" value="hihi~~~~"></Input>
+        </VBox>
+        	<t:Table
+				rows="{/ProductCollection}"
+				selectionMode="MultiToggle"
+				visibleRowCount="7"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<t:extension>
+					<OverflowToolbar style="Clear">
+						<Title id="title" text="Products"/>
+					</OverflowToolbar>
+				</t:extension>
+				<t:columns>
+					<t:Column width="11rem">
+						<Label text="Product Name" />
+						<t:template>
+							<Text text="{Name}" wrapping="false" />
+						</t:template>
+					</t:Column>
+					
+				</t:columns>
+			</t:Table>
+
+
+
+
+        </content>   
+        
+    </Page>
+</mvc:View>

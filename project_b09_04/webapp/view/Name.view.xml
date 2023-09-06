@@ -1,0 +1,69 @@
+<mvc:View controllerName="sync.projectb0904.controller.Name"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:t="sap.ui.table"
+     displayBlock="true"
+    xmlns="sap.m"
+    >
+    <Page id="page" title="{i18n>title}"> 
+       <content>
+       
+        <t:Table
+            id = "IdTab"
+            rows="{/list}"
+            selectionMode="MultiToggle"
+            visibleRowCount="7"
+            paste="onPaste"
+            ariaLabelledBy="title"
+            rowActionCount="1"
+            >
+            <t:extension>
+                <OverflowToolbar style="Clear">
+                    <Title id="title" text="Products"/>
+                    <ToolbarSpacer></ToolbarSpacer>
+                    <Button text = "Add" icon = "sap-icon://add" press = "onClick"></Button>
+                    <Button text = "Delete" icon = "sap-icon://delete"  press = "onClick2"></Button>
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column width="11rem">
+                    <Label text="Name" />
+                    <t:template>
+                        <Input value = "{name}" ></Input>
+                    </t:template>
+                </t:Column>
+                <t:Column width="11rem">
+                    <Label text="Address" />
+                    <t:template>
+                       <Input  value = "{address}"></Input>
+                    </t:template>
+                </t:Column>
+                <t:Column width="11rem">
+                    <Label text="Phone" />
+                    <t:template>
+                      <Input  value = "{phone}"></Input>
+                    </t:template>
+                    
+                </t:Column>
+                    <t:Column width="11rem">
+                    <Label text="Department" />
+                    <t:template>
+                        <Input value = "{department}" ></Input>
+                    </t:template>
+                </t:Column>
+            </t:columns>
+            
+            <t:rowActionTemplate>
+                <t:RowAction>
+                    <t:items>
+                            <t:RowActionItem press='onRowActiondel' type='Delete'></t:RowActionItem>
+                    </t:items>
+                </t:RowAction>
+            </t:rowActionTemplate>
+
+
+        </t:Table> 
+       
+       
+       </content>
+    </Page>
+</mvc:View>

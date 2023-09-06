@@ -1,0 +1,268 @@
+<mvc:View controllerName="sync.projectb0905.controller.Main"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <!-- VerticalLayout안에 선언된 것들은 세로 정렬 되어 만들어짐 -->
+
+            <l:VerticalLayout>
+                <Input />
+                <Text />
+                <StepInput />
+                <!-- +1또는 -1  누르는 버튼 -->
+                <ComboBox />
+                <!--입력도 하고 select도 하고 -->
+                <DatePicker />
+                <DateRangeSelection />
+                <!--날짜 범위-->
+            </l:VerticalLayout>
+
+            <Panel expandable='true' expanded='false'>
+                <headerToolbar>
+                    <Toolbar>
+                        <Text text="Panel test" />
+                        <ToolbarSpacer />
+                        <Button text='Button' />
+                    </Toolbar>
+                </headerToolbar>
+
+                <f:SimpleForm id="SimpleFormChangeColumn_threeGroups234" editable="true" layout="ColumnLayout" title="Supplier" columnsM="2" columnsL="3" columnsXL="4">
+                    <f:content>
+                        <core:Title text="Address" />
+                        <Label text="Name" />
+                        <Input id="name" value="{SupplierName}" />
+                        <Input id="name2" value="{SupplierName}" />
+                        <Input id="name3" value="{SupplierName}" />
+
+                        <Label text="Street/No." />
+                        <Input value="{Street}" />
+                        <Input value="{HouseNumber}">
+                            <layoutData>
+                                <f:ColumnElementData cellsSmall="2" cellsLarge="1" />
+                            </layoutData>
+                        </Input>
+                        <Label text="ZIP Code/City" />
+                        <Input value="{ZIPCode}">
+                            <layoutData>
+                                <f:ColumnElementData cellsSmall="3" cellsLarge="2" />
+                            </layoutData>
+                        </Input>
+                        <Input value="{City}" />
+                        <Label text="Country" />
+                        <Select id="country" selectedKey="{Country}">
+                            <items>
+                                <core:Item text="England" key="England" />
+                                <core:Item text="Germany" key="Germany" />
+                                <core:Item text="USA" key="USA" />
+                            </items>
+                        </Select>
+                        <Label text="Web" />
+                        <Input value="{Url}" type="Url" />
+                        <core:Title text="Contact" />
+                        <Label text="Twitter" />
+                        <Input value="{Twitter}" />
+                        <Label text="Email" />
+                        <Input value="{Email}" type="Email" />
+                        <Label text="Tel." />
+                        <Input value="{Tel}" type="Tel" />
+                        <core:Title text="Other" />
+                        <Label text="SMS" />
+                        <Input value="{Sms}" type="Tel" />
+                        <Label text="Mobile" />
+                        <Input value="{Mobile}" type="Tel" />
+                        <Label text="Pager" />
+                        <Input value="{Pager}" type="Tel" />
+                        <Label text="Fax" />
+                        <Input value="{Fax}" type="Tel" />
+                    </f:content>
+                </f:SimpleForm>
+            </Panel>
+            <!-- 뷰 안에 뷰 호출 방법. -->
+            <mvc:XMLView viewName="sync.projectb0905.view.HelloPanel" type="XML"></mvc:XMLView>
+
+            <!-- <f:SimpleForm id="SimpleFormChangeColumn_threeGroups234" editable="true" layout="ColumnLayout" title="Supplier" columnsM="2" columnsL="3" columnsXL="4">
+			<f:content>
+			
+      	<core:Title text="Address" />
+				<Label text="Name" />
+				<Input id="name" value="{SupplierName}" />
+        <Input id="name2" value="{SupplierName}" />
+        <Input id="name3" value="{SupplierName}" />
+
+				<Label text="Street/No." />
+				<Input value="{Street}">
+				</Input>
+				<Input value="{HouseNumber}">
+					<layoutData>
+						<f:ColumnElementData cellsSmall="2" cellsLarge="1" />
+					</layoutData>
+				</Input>
+				<Label text="ZIP Code/City" />
+				<Input value="{ZIPCode}">
+					<layoutData>
+						<f:ColumnElementData cellsSmall="3" cellsLarge="2" />
+					</layoutData>
+				</Input>
+				<Input value="{City}" />
+				<Label text="Country" />
+				<Select id="country" selectedKey="{Country}">
+					<items>
+						<core:Item text="England" key="England"/>
+						<core:Item text="Germany" key="Germany"/>
+						<core:Item text="USA" key="USA"/>
+					</items>
+				</Select>
+				<Label text="Web" />
+				<Input value="{Url}" type="Url"/>
+				<core:Title text="Contact" />
+				<Label text="Twitter" />
+				<Input value="{Twitter}" />
+				<Label text="Email" />
+				<Input value="{Email}" type="Email"/>
+				<Label text="Tel." />
+				<Input value="{Tel}" type="Tel"/>
+				<core:Title text="Other" />
+				<Label text="SMS" />
+				<Input value="{Sms}" type="Tel"/>
+				<Label text="Mobile" />
+				<Input value="{Mobile}" type="Tel"/>
+				<Label text="Pager" />
+				<Input value="{Pager}" type="Tel"/>
+				<Label text="Fax" />
+				<Input value="{Fax}" type="Tel"/>
+			</f:content>
+		</f:SimpleForm> -->
+
+            <!-- <VBox class="sapUiSmallMargin">
+		<f:Form id="FormDisplayColumn_threeGroups234" editable="false">
+			<f:title>
+				<core:Title text="Supplier" />
+			</f:title>
+			<f:layout>
+				<f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer title="Address">
+					<f:formElements>
+						<f:FormElement label="Name">
+							<f:fields>
+								<Text text="{SupplierName}" id="nameText" /> 
+							</f:fields>
+          
+						</f:FormElement>
+						<f:FormElement label="Street">
+							<f:fields>
+								<Text text="{Street} {HouseNumber}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="ZIP Code/City">
+							<f:fields>
+								<Text text="{ZIPCode} {City}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Country">
+							<f:fields>
+								<Text text="{Country}" id="countryText" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Web">
+							<f:fields>
+								<Link text="Url" href="{Url}" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer title="Contact">
+					<f:formElements>
+						<f:FormElement label="Twitter">
+							<f:fields>
+								<Text text="{Twitter}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Email">
+							<f:fields>
+								<Text text="{Email}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Tel.">
+							<f:fields>
+								<Text text="{Tel}" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer title="Other">
+					<f:formElements>
+						<f:FormElement label="SMS">
+							<f:fields>
+								<Text text="{Sms}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Mobile">
+							<f:fields>
+								<Text text="{Mobile}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Pager">
+							<f:fields>
+								<Text text="{Pager}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Fax">
+							<f:fields>
+								<Text text="{Fax}" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</VBox> -->
+
+            <!-- <l:Grid>
+        <Input value= "Value_1">
+          <layoutData>
+            <l:GridData span="XL6 L2 M4 S12"></l:GridData>
+          </layoutData>
+        </Input>
+
+         <Input value= "Value_2">
+          <layoutData>
+            <l:GridData span="XL6 L3 M4 S12"></l:GridData>
+          </layoutData>
+        </Input>
+
+         <Input value= "Value_3">
+          <layoutData>
+            <l:GridData span="XL6 L4 M4 S12"></l:GridData>
+          </layoutData>
+        </Input>
+
+         <Input value= "Value_4">
+          <layoutData>
+            <l:GridData span="XL6 L5 M4 S12"></l:GridData>
+          </layoutData>
+        </Input>
+ 
+         <Input value= "Value_5">
+          <layoutData>
+            <l:GridData span="XL6 L6 M4 S12"></l:GridData>
+          </layoutData>
+        </Input>
+
+      </l:Grid> -->
+
+            <!-- <l:HorizontalLayout>
+                <Input class='aaa'></Input>        
+                <Text></Text> 
+                <StepInput class ='sapUiSmallMarginEnd' ></StepInput>     
+                <ComboBox></ComboBox> 
+                <DatePicker></DatePicker>
+                <DateRangeSelection></DateRangeSelection> 
+        </l:HorizontalLayout> -->
+        </content>
+    </Page>
+</mvc:View>

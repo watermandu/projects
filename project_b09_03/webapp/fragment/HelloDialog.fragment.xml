@@ -1,0 +1,18 @@
+<c:FragmentDefinition 
+    xmlns:c="sap.ui.core"
+    xmlns="sap.m">
+
+    <Dialog id="idDialog" 
+    title="Hello Dailog" 
+    contentHeight="50%"
+     contentWidth="40%">        <!--사이즈 단위는 %, px, rem, em -->
+        <content>
+            <Text text="Hello Content!"></Text>
+        </content>
+        <endButton > 
+            <Button text="close" press = "onClose" ></Button>
+        </endButton>
+<!-- 자동으로 potter 위치에 붙음 -->
+    </Dialog>
+
+</c:FragmentDefinition>
