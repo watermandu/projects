@@ -12,10 +12,12 @@ sap.ui.define([
                 //fnDateString: 날짜 객체를 yyyy/mm/dd 로 변경해줌. 
                 fnDateString: function(oDate){
                     if (oDate){
-                      var result= ""; 
-                      debugger;
+                      let oDateTimeInstance = sap.ui.core.format.DateFormat.getDateTimeInstance({
+                        pattern: "yyyy-MM-dd"
+                      });
+                      return oDateTimeInstance.format(oDate); // format이라 메소드를 사용해서 oDate 객체를 갖고오고 
                     }   
-                    return result;
+                    
                 }
             },
 

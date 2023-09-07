@@ -62,15 +62,23 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Text text="{OrderID}" />
+                        <Text text="{path:'OrderID'}" />
                         <Text text="{CustomerID}" />
-                        <Text text="{EmployeeID}" />
-                        <Text text="{
+                        <!-- <Text text="{= ${EmployeeID} > 3 ? 'yes' : 'no'}" /> -->
+                        <Input enabled="{= ${EmployeeID} > 3 ? false : true }" 
+                                value = "{CustomerID}"/>
+                      <Text text="{
                                     path: 'OrderDate',
                                     formatter: '.formatter.fnDateString'
                                     }" />
-                        <Text text="{RequiredDate}" />
-                        <Text text="{ShippedDate}" />
+                      <Text text="{
+                                    path:'RequiredDate',
+                                    formatter:'.formatter.fnDateString'
+                                    }" />
+                      <Text text="{
+                                    path: 'ShippedDate',
+                                    formatter: '.formatter.fnDateString'
+                                    }" />
                     </cells>
                 </ColumnListItem>
             </items>

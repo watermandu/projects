@@ -121,7 +121,7 @@ sap.ui.define(
             name: "Test.projectb0903.fragment.HelloDialog",
             type: "XML"
         }).then(function(oDialog) {
-           oDialog.open();
+          oDialog.open();
         }.bind(this));
         }
 
@@ -140,7 +140,7 @@ sap.ui.define(
         //     oDialog.open();
         //   }); //load 된 객체가 oDialog 위치에 들어오게 된다.
         // }
-       
+        
       },
 
       onOpenDialog2:function() {
