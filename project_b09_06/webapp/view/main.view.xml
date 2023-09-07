@@ -19,8 +19,8 @@
         <f:DynamicPageHeader pinnable="true">
             <layout:HorizontalLayout allowWrapping="true">
                 <layout:VerticalLayout class="sapUiMediumMarginEnd">
-                 <Label text="Order Id"></Label>
-                 <Input id="idInput" width="300px" showValueHelp="true" valueHelpRequest="onValueHelp"></Input>
+                    <Label text="Order Id"></Label>
+                    <Input id="idInput" width="300px" showValueHelp="true" valueHelpRequest="onValueHelp"></Input>
                 </layout:VerticalLayout>
 
                 <layout:VerticalLayout>
@@ -31,8 +31,7 @@
         </f:DynamicPageHeader>
     </f:header>
     <f:content>
-        <Table id="idProductsTable" sticky="HeaderToolbar,ColumnHeaders" inset="false" items= '{/Orders}'
-						 class="sapFDynamicPageAlignContent" width="auto">
+        <Table id="idProductsTable" sticky="HeaderToolbar,ColumnHeaders" inset="false" items= '{/Orders}' class="sapFDynamicPageAlignContent" width="auto">
             <headerToolbar>
                 <Toolbar>
                     <Title text="Products" level="H2"/>
@@ -64,23 +63,15 @@
                 <ColumnListItem>
                     <cells>
                         <Text text="{OrderID}" />
+                        <Text text="{CustomerID}" />
+                        <Text text="{EmployeeID}" />
+                        <Text text="{
+                                    path: 'OrderDate',
+                                    formatter: '.formatter.fnDateString'
+                                    }" />
+                        <Text text="{RequiredDate}" />
+                        <Text text="{ShippedDate}" />
                     </cells>
-                    <cells>
-                     <Text text="{CustomerID}" />
-                    </cells>
-                    <cells>
-                     <Text text="{EmployeeID}" />
-                    </cells>
-                     <cells>
-                     <Text text="{OrderDate}" />
-                    </cells>
-                     <cells>
-                     <Text text="{RequiredDate}" />
-                    </cells>
-                     <cells> 
-                     <Text text="{ShippedDate}" />
-                    </cells>
-                    
                 </ColumnListItem>
             </items>
         </Table>

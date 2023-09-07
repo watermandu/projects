@@ -8,6 +8,18 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("projectb0906.controller.main", {
+            formatter: { // formatter 객체 안에다 format function 들을 넣고 관리
+                //fnDateString: 날짜 객체를 yyyy/mm/dd 로 변경해줌. 
+                fnDateString: function(oDate){
+                    if (oDate){
+                      var result= ""; 
+                      debugger;
+                    }   
+                    return result;
+                }
+            },
+
+            
             onInit: function () {
 // t
             }, 
@@ -22,7 +34,7 @@ sap.ui.define([
                         name: "projectb0906.Fragment.Order",
                         type: "XML"
                     }).then(function(oDialog) {
-                       oDialog.open();
+                      oDialog.open();
                     }.bind(this));
                 }
             },
