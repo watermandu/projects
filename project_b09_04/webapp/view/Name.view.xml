@@ -1,12 +1,12 @@
 <mvc:View controllerName="sync.projectb0904.controller.Name"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:t="sap.ui.table"
-     displayBlock="true"
+    displayBlock="true"
     xmlns="sap.m"
     >
     <Page id="page" title="{i18n>title}"> 
-       <content>
-       
+      <content>
+
         <t:Table
             id = "IdTab"
             rows="{/list}"
@@ -34,7 +34,7 @@
                 <t:Column width="11rem">
                     <Label text="Address" />
                     <t:template>
-                       <Input  value = "{address}"></Input>
+                      <Input  value = "{address}"></Input>
                     </t:template>
                 </t:Column>
                 <t:Column width="11rem">
