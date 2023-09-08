@@ -1,10 +1,12 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "sap/ui/core/mvc/Controller",
+    'sap/ui/model/FilterOperator',
+    'sap/ui/model/Filter'
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller) {
+    function (Controller,FilterOperator,Filter) {
         "use strict";
 
         return Controller.extend("projectb0906.controller.main", {
@@ -44,6 +46,38 @@ sap.ui.define([
                 let oButton = oEvent.getSource();
                 let oDialog = oButton.getParent();
                 oDialog.close();
+            },
+            onBeforeOpen: function (oEvent) {
+              let oTable = this.getView().byId('idOrderTable');
+              let aFilters = [];
+              let oFilter =   new Filter({
+                path: "EmployeeID",
+                operator: 'GE',
+                value1: 4
+              });
+
+              let oFilter2 = new Filter({ 
+                path: 'CustomerID',
+                operator:'Contains',
+                value1: 'R',
+                value2: '' 
+              });
+
+              // aFilters = [ new Filter({
+              //   path: "EmployeeID",
+              //   operator: 'GE',
+              //   value1: 4
+              // }),
+              // new Filter({ 
+              //   path: 'CustomerID',
+              //   operator:'Contains',
+              //   value1: 'R',
+              //   value2: '' 
+              // }) ];
+              aFilters.push(oFilter);
+              aFilters.push(oFilter2);
+              //let oFilter = new Filter("EmployeeID", FilterOperator.EQ, 4);
+              oTable.getBinding('rows').filter(aFilters);
             }
 
         });

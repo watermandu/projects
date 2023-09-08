@@ -3,17 +3,19 @@
   xmlns="sap.m"
   xmlns:t="sap.ui.table">
   <Page id="page" title="{i18n>title}">
-    <VBox class="sapUiLargeMargin"></VBox>
-    <Text text="버튼을 클릭하면 아래 Input에 값이 랜덤으로 채워집니다"></Text>
-    <Input  value="?" id="idBut" type='Number' change="onVlaueChange"></Input>
-    <Button text="Random" press="onRandomPress"></Button>
+    <VBox class="sapUiLargeMargin">
+      <Text text="버튼을 클릭하면 아래 Input에 값이 랜덤으로 채워집니다"></Text>
+      <Input  value="?" id="idBut" type='Number' change="onVlaueChange"></Input>
+      <Button text="Random" press="onRandomPress"></Button>
+    </VBox>
     <!--                -->
-    <VBox></VBox>
+  
     <!-- 대문자는 class 소문자는 aggregation -->
     <t:Table rows="{list>/rows}" selectionMode="MultiToggle" visibleRowCount="7">
       <t:extension>
         <OverflowToolbar>
           <Title text="랜덤목록리스트"/>
+          <Text text=""></Text>
         </OverflowToolbar>
       </t:extension>
 
