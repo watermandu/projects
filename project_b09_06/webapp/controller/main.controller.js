@@ -83,15 +83,21 @@ sap.ui.define([
               let oValue = this.getView().byId('idInput').getValue();
               let oTable = this.getView().byId('idProductsTable');
               let aFilters = [];
-              let oFilter =   new Filter({
+              let oFilter = new Filter({
                 path: "OrderID",
                 operator: 'EQ',
                 value1: oValue
               });
-              aFilters.push(oFilter);
-              oTable.getBinding('items').filter(aFilters);
-              
+              if(oValue){
+                aFilters.push(oFilter);
+              }
+                // aFilters.push(oFilter);
+                oTable.getBinding('items').filter(aFilters);
+            },
+            onNavDetial: function (oEvent) {
+              let oRouter = this.getOwnerComponent().getRouter();
+              oRouter.navTo('RouteDetail');
             }
-
+            
         });
     });
