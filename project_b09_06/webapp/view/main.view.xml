@@ -12,6 +12,9 @@
             <f:heading>
                 <Title text="Header Title"/>
             </f:heading>
+            <f:actions>
+              <Button  text="Search" type="Emphasized" press="onSearch"></Button>
+            </f:actions>
         </f:DynamicPageTitle>
     </f:title>
     <!-- DynamicPage Header -->

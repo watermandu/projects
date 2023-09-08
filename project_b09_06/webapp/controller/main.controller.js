@@ -74,10 +74,23 @@ sap.ui.define([
               //   value1: 'R',
               //   value2: '' 
               // }) ];
-              aFilters.push(oFilter);
-              aFilters.push(oFilter2);
+              aFilter
               //let oFilter = new Filter("EmployeeID", FilterOperator.EQ, 4);
               oTable.getBinding('rows').filter(aFilters);
+            },
+
+            onSearch: function(params) {
+              let oValue = this.getView().byId('idInput').getValue();
+              let oTable = this.getView().byId('idProductsTable');
+              let aFilters = [];
+              let oFilter =   new Filter({
+                path: "OrderID",
+                operator: 'EQ',
+                value1: oValue
+              });
+              aFilters.push(oFilter);
+              oTable.getBinding('items').filter(aFilters);
+              
             }
 
         });
