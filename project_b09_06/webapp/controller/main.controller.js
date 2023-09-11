@@ -42,6 +42,20 @@ sap.ui.define([
                     }.bind(this));
                 }
             },
+            onValueHelp2: function(){
+              let oDialog2 = this.byId('idDialog2');
+              if(oDialog2) {
+                oDialog2.open();
+            }else{
+              this.loadFragment({
+              name: "projectb0906.Fragment.Customer",
+              type: "XML"
+            }).then(function(oDialog2){
+              oDialog2.open();
+            }.bind(this));}
+            
+
+            },
             onClose: function (oEvent) {
                 let oButton = oEvent.getSource();
                 let oDialog = oButton.getParent();
@@ -62,7 +76,6 @@ sap.ui.define([
                 value1: 'R',
                 value2: '' 
               });
-
               // aFilters = [ new Filter({
               //   path: "EmployeeID",
               //   operator: 'GE',
@@ -80,26 +93,64 @@ sap.ui.define([
               oTable.getBinding('rows').filter(aFilters);
             },
 
+            onBeforeOpen2:function (params) {
+              
+              let oValue = this.getView().byId('idInput2').getValue();          
+              let oTable = this.getView().byId('idCustomerTable');
+              let aFilters = [];
+              let oFilter =   new Filter({
+                path: "CustomerID",
+                operator: 'EQ',
+                value1: oValue
+              });
+              debugger;
+              if(oValue==""){
+                oTable.getBinding('rows').filter();
+              }else{
+                aFilters.push(oFilter);
+                oTable.getBinding('rows').filter(aFilters);
+              }
+            },
+
             onSearch: function(params) {
               let oValue = this.getView().byId('idInput').getValue();
               let oTable = this.getView().byId('idProductsTable');
+              let oValue2 = this.getView().byId('idInput2').getValue();
+              let DateFrom = this.getView().byId('DateRange').getDateValue();
+              let DateTo = this.getView().byId('DateRange').getSecondDateValue();
               let aFilters = [];
+              debugger;
+              
               let oFilter = new Filter({
                 path: "OrderID",
                 operator: 'EQ',
                 value1: oValue
               });
-              if(oValue){
-                aFilters.push(oFilter);
-              }
+              let oFilter2 = new Filter({
+                path: "CustomerID",
+                operator: 'EQ',
+                value1: oValue2
+              });
+              let oFilter3 = new Filter({
+                path: "OrderDate",
+                operator: 'BT',
+                value1: DateFrom,
+                value2: DateTo
+              });
+              // if(oValue){
+              //   aFilters.push(oFilter);
+              // }
                 // aFilters.push(oFilter);
+                aFilters.push(oFilter);
+                aFilters.push(oFilter2);
+                aFilters.push(oFilter3);
                 oTable.getBinding('items').filter(aFilters);
             },
-            onNavDetial: function (oEvent, test) {
+            onNavDetial: function (oEvent) {
               let oRouter = this.getOwnerComponent().getRouter();
               oRouter.navTo('RouteDetail',{
                 paramOrder: 'options',
-                param2: test || oEvent
+                param2: oEvent
               });
             },
             onSelectionChange: function (oEvent) {
@@ -110,10 +161,10 @@ sap.ui.define([
               // let oRouter = this.getOwnerComponent().getRouter();
               // oRouter.navTo('RouteDetail',{
               //   paramOrder: 'options',
-              //   param2: test || oEvent
+              //   param2: oSelID
               // });
               
-              this.onNavDetial(null, oSelID); // 라우터 함수를 불러와서 실행하면 라우터 버튼만 누를때 
+              this.onNavDetial(oSelID); // 라우터 함수를 불러와서 실행하면 라우터 버튼만 누를때 
             }
             
         });
