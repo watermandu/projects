@@ -14,7 +14,7 @@
             </f:heading>
             <f:actions>
               <Button  text="Search" type="Emphasized" press="onSearch"></Button>
-              <Button  text="Router" type="Emphasized" press="onNavDetial"></Button>
+              <Button  text="Router" type="Emphasized" press="onNavDetial('RouterButton')"></Button> <!--($event, 'aa')-->
             </f:actions>
         </f:DynamicPageTitle>
     </f:title>
@@ -35,7 +35,10 @@
         </f:DynamicPageHeader>
     </f:header>
     <f:content>
-        <Table id="idProductsTable" sticky="HeaderToolbar,ColumnHeaders" inset="false" items= '{/Orders}' class="sapFDynamicPageAlignContent" width="auto">
+        <Table id="idProductsTable" 
+        mode= "SingleSelectMaster"
+        selectionChange="onSelectionChange"
+        sticky="HeaderToolbar,ColumnHeaders" inset="false" items= '{/Orders}' class="sapFDynamicPageAlignContent" width="auto">
             <headerToolbar>
                 <Toolbar>
                     <Title text="Products" level="H2"/>
@@ -64,7 +67,7 @@
 
             </columns>
             <items>
-                <ColumnListItem>
+                <ColumnListItem >
                     <cells>
                         <Text text="{path:'OrderID'}" />
                         <Text text="{CustomerID}" />

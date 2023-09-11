@@ -25,7 +25,7 @@ sap.ui.define([
 
             
             onInit: function () {
-// t
+
             }, 
             
             onValueHelp: function () {
@@ -74,7 +74,8 @@ sap.ui.define([
               //   value1: 'R',
               //   value2: '' 
               // }) ];
-              aFilter
+              aFilters.push(oFilter);
+              
               //let oFilter = new Filter("EmployeeID", FilterOperator.EQ, 4);
               oTable.getBinding('rows').filter(aFilters);
             },
@@ -94,9 +95,18 @@ sap.ui.define([
                 // aFilters.push(oFilter);
                 oTable.getBinding('items').filter(aFilters);
             },
-            onNavDetial: function (oEvent) {
+            onNavDetial: function (oEvent, test) {
               let oRouter = this.getOwnerComponent().getRouter();
-              oRouter.navTo('RouteDetail');
+              oRouter.navTo('RouteDetail',{
+                paramOrder: 'options',
+                param2: test || oEvent
+              });
+            },
+            onSelectionChange: function (oEvent) {
+              let sPath= oEvent.getParameters().listItem.getBindingContextPath(); // 선택한 row에 대한 정보 갖고 오기.  
+              let oModel = this.getView().getModel();
+              let oSelID = oModel.getProperty(sPath).OrderID;
+              this.onNavDetial(null, oSelID); // 라우터 함수를 불러와서 실행하면 라우터 버튼만 누를때 
             }
             
         });

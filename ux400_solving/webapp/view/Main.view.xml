@@ -18,7 +18,6 @@
           <Text text=""></Text>
         </OverflowToolbar>
       </t:extension>
-
       <t:columns>
         <t:Column>
           <Label text="value"></Label>

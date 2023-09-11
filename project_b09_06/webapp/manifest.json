@@ -102,7 +102,7 @@
         },
         {
           "name": "RouteDetail",
-          "pattern": "detail",
+          "pattern": "detail/{paramOrder}/{param2}",
           "target": [
             "TargetDetail"
           ]
