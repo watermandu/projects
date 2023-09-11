@@ -7,7 +7,8 @@
 id = "idDialog" beforeOpen="onBeforeOpen" title="Dialog Table" contentHeight="50%" contentWidth="40%" resizable="true" draggable="true">
 
     <content>
-      <t:Table id='idOrderTable' rows="{/Orders}" selectionMode="MultiToggle" visibleRowCount="7" paste="onPaste" ariaLabelledBy="title">
+      <t:Table id='idOrderTable' rows="{/Orders}" selectionMode="Single" visibleRowCount="7" paste="onPaste" ariaLabelledBy="title"
+      rowSelectionChange = "OrderSel">
 
         <!-- rows="{path: '/Orders',
               filters: [{

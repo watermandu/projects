@@ -93,17 +93,19 @@ sap.ui.define([
               oTable.getBinding('rows').filter(aFilters);
             },
 
-            onBeforeOpen2:function (params) {
-              
+            onBeforeOpen2:function (oEvent) {
+          
+
+
               let oValue = this.getView().byId('idInput2').getValue();          
               let oTable = this.getView().byId('idCustomerTable');
               let aFilters = [];
               let oFilter =   new Filter({
                 path: "CustomerID",
                 operator: 'EQ',
-                value1: oValue
+                value1: oValue||oEvent
               });
-              debugger;
+            
               if(oValue==""){
                 oTable.getBinding('rows').filter();
               }else{
@@ -121,31 +123,38 @@ sap.ui.define([
               let aFilters = [];
               debugger;
               
-              let oFilter = new Filter({
-                path: "OrderID",
-                operator: 'EQ',
-                value1: oValue
-              });
-              let oFilter2 = new Filter({
-                path: "CustomerID",
-                operator: 'EQ',
-                value1: oValue2
-              });
+              if (oValue){
+                let oFilter = new Filter({
+                  path: "OrderID",
+                  operator: 'EQ',
+                  value1: oValue
+                });
+                aFilters.push(oFilter);
+              }
+
+              if(oValue2){
+                aFilters.push(new Filter({
+                  path: "CustomerID",
+                  operator: 'EQ',
+                  value1: oValue2
+                }));
+            }
+
+            if(DateFrom && DateTo){
               let oFilter3 = new Filter({
                 path: "OrderDate",
                 operator: 'BT',
                 value1: DateFrom,
                 value2: DateTo
               });
-              // if(oValue){
-              //   aFilters.push(oFilter);
-              // }
-                // aFilters.push(oFilter);
-                aFilters.push(oFilter);
-                aFilters.push(oFilter2);
-                aFilters.push(oFilter3);
+              aFilters.push(oFilter3);
+            }
+            if(oValue=='' || oValue2=='' ||DateFrom == null || DateTo == null){
+              alert('조건 3가지를 전부 정확하게 입력해주세요');
+            }
                 oTable.getBinding('items').filter(aFilters);
             },
+
             onNavDetial: function (oEvent) {
               let oRouter = this.getOwnerComponent().getRouter();
               oRouter.navTo('RouteDetail',{
@@ -165,7 +174,21 @@ sap.ui.define([
               // });
               
               this.onNavDetial(oSelID); // 라우터 함수를 불러와서 실행하면 라우터 버튼만 누를때 
+            },
+            OrderSel:function(oEvent) {
+              let oSelID = oEvent.getParameters().rowContext.getObject().OrderID;
+              this.getView().byId('idInput').setValue(oSelID);
+              this.onClose(oEvent);
+              //두번쨰 input 필터 걸어주기. 
+              this.onBeforeOpen2(oEvent);
+            },
+            CustomSel:function(oEvent) {
+              let oSelID = oEvent.getParameters().rowContext.getObject().CustomerID;
+              this.getView().byId('idInput2').setValue(oSelID);
+              this.onClose(oEvent);
+              
             }
             
         });
     });
+  

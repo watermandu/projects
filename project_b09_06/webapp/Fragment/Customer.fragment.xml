@@ -8,7 +8,8 @@ id = "idDialog2" beforeOpen="onBeforeOpen2" title="Dialog Table" contentHeight="
 
     <content>
       <t:Table 
-      id='idCustomerTable' rows="{/Customers}" selectionMode="Single" visibleRowCount="7" paste="onPaste" ariaLabelledBy="title">
+      id='idCustomerTable' rows="{/Customers}" selectionMode="Single" visibleRowCount="7" paste="onPaste" ariaLabelledBy="title"
+      rowSelectionChange="CustomSel">
 
         <t:extension>
           <OverflowToolbar style="Clear">
