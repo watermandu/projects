@@ -106,6 +106,13 @@ sap.ui.define([
               let sPath= oEvent.getParameters().listItem.getBindingContextPath(); // 선택한 row에 대한 정보 갖고 오기.  
               let oModel = this.getView().getModel();
               let oSelID = oModel.getProperty(sPath).OrderID;
+
+              // let oRouter = this.getOwnerComponent().getRouter();
+              // oRouter.navTo('RouteDetail',{
+              //   paramOrder: 'options',
+              //   param2: test || oEvent
+              // });
+              
               this.onNavDetial(null, oSelID); // 라우터 함수를 불러와서 실행하면 라우터 버튼만 누를때 
             }
             
