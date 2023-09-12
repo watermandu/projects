@@ -1,7 +1,48 @@
 <mvc:View controllerName="projectb0907.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
-    </Page>
+  xmlns:viz="sap.viz.ui5.controls"
+  xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+  xmlns:viz.data="sap.viz.ui5.data"
+  xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+  xmlns="sap.m">
+  <Page id="page" title="{i18n>title}">
+    <content>
+    <viz:VizFrame id="idLineChart" width="auto" height="500px" vizType='line'
+    uiConfig = "{'applicationSet':'fiori'}"
+    vizProperties= "{
+      'title':{'visivle':true , 'text': 'Line Chart'},
+      'legendGroup':{layout:{position: 'left'} },
+      'plotArea':{
+        drawingEffect: 'glossy',
+        colorPalette:['#B5B2FF', '#0100FF', '#47C83E']
+      }
+    }"
+    >
+    
+    <viz:dataset> <!--데이터 세팅-->
+        <viz.data:FlattenedDataset data="{view>/list}">
+          <viz.data:dimensions> <!--x 축-->
+            <viz.data:DimensionDefinition name='이름' value='{view>name}'></viz.data:DimensionDefinition> 
+          </viz.data:dimensions>
+
+          <viz.data:measures><!-- y축-->
+            <viz.data:MeasureDefinition name='숫자' value='{view>rate}'></viz.data:MeasureDefinition>
+            <viz.data:MeasureDefinition name='숫자2' value='{view>cost}'></viz.data:MeasureDefinition>
+          </viz.data:measures>
+        </viz.data:FlattenedDataset>
+    </viz:dataset> 
+
+    <viz:feeds> <!--차트 관련 Ui 설정-->
+    <!-- bar or line은 categoryAxis + valueAxis 필수 한 세트. donut or pie 는 color + size 필수 한 세트  -->
+      <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="이름"></viz.feeds:FeedItem>
+      <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="숫자"></viz.feeds:FeedItem>
+      <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="숫자2"></viz.feeds:FeedItem>
+      <!-- <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="숫자,숫자2"> 이런식으로 사용하는 것도 가능.  -->
+    </viz:feeds>
+
+    </viz:VizFrame>
+
+    <!-- Contriller -->
+    <viz:VizFrame id="idChart" vizType="column"></viz:VizFrame>
+    </content>
+  </Page>
 </mvc:View>

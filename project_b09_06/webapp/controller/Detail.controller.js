@@ -42,13 +42,15 @@ sap.ui.define([
               '$expand':'Order_Details'
             },
             success: function (oReturn) { //데이터 갖고 오기 성공하면 success실행
-              this.getView()
+              let game = oReturn.Order_Details;
+              // this.getView().setModel(game);
               console.log(oReturn);
             },  
             error:function (oError) {
               console.log('error');
             }
           } );
+          
           // this.getView().bindElement(`/Orders(${oParam.param2})`);
         
         },
