@@ -95,7 +95,7 @@ sap.ui.define([
 
             onBeforeOpen2:function (oEvent) {
           
-
+              
 
               let oValue = this.getView().byId('idInput2').getValue();          
               let oTable = this.getView().byId('idCustomerTable');
