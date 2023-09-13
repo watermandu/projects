@@ -26,7 +26,11 @@ sap.ui.define([
               //model 
               let oModel = this.getView().getModel('list');
               let list = oModel.getProperty('/rows'); 
+
               idInput.setValue(Random);
+              list.push({'text':Random});
+              oModel.setProperty('/rows',list);
+              debugger;
 
 
               
