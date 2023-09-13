@@ -2,34 +2,33 @@
   xmlns:mvc="sap.ui.core.mvc"
   xmlns:core="sap.ui.core"
   xmlns="sap.m"
-  xmlns:l="sap.ui.layout"
-  >
+  xmlns:l="sap.ui.layout">
   <l:Grid class="sapUiSmallMargin">
-      <Input value= "{list>/MB_ID}" placeholder="Member_ID" description="Member_ID">
+      <Input id='idInput1' value= "{view>/MB_ID}" placeholder="Member_ID" description="Member_ID">
         <layoutData>
           <l:GridData span="XL6 L2 M4 S12"></l:GridData>
         </layoutData>
       </Input>
 
-      <Input value= "{list>/MB_NM}" placeholder="Member_Name" description="Member_Name">
+      <Input id='idInput2' value= "{view>/MB_NM}" placeholder="Member_Name" description="Member_Name">
         <layoutData>
           <l:GridData span="XL6 L3 M4 S12"></l:GridData>
         </layoutData>
       </Input>
 
-      <Input value= "{list>/TELNO}" placeholder="Member_TELNO" description="Member_TELNO">
+      <Input id='idInput3'  value= "{view>/TELNO}" placeholder="Member_TELNO" description="Member_TELNO">
         <layoutData>
           <l:GridData span="XL6 L4 M4 S12"></l:GridData>
         </layoutData>
       </Input>
 
-      <Input value= "{list>/EMAIL}" placeholder="Member_EMAIL" description="Member_EMAIL">
+      <Input id='idInput4'  value= "{view>/EMAIL}" placeholder="Member_EMAIL" description="Member_EMAIL">
         <layoutData>
           <l:GridData span="XL6 L5 M4 S12"></l:GridData>
         </layoutData>
       </Input>
 
-      <Input value= "{list>/MB_ST}" placeholder="Member_ST" description="Member_ST">
+      <Input id='idInput5' value= "{view>/MB_ST}" placeholder="Member_ST" description="Member_ST">
         <layoutData>
           <l:GridData span="XL6 L6 M4 S12"></l:GridData>
         </layoutData>
@@ -37,7 +36,9 @@
 
     </l:Grid>
 
-  <Table id="idProductsTable" inset="false" items="{/MemberSet}" itemPress="sSel" mode="SingleSelectMaster">
+  <Table id="idProductsTable" inset="false" items="{/MemberSet}" itemPress="sSel" mode="SingleSelectMaster"
+  growingScrollToLoad = 'true'
+  >
 
     <infoToolbar>
       <OverflowToolbar>
