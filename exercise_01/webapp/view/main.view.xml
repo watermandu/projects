@@ -1,0 +1,32 @@
+<mvc:View controllerName="exercise01.controller.main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    >
+    <Page id="page" title="{i18n>title}">
+      <VBox>
+      <HBox>
+      <Text text="1: 버튼을 입력하면 아래 Input에 값이"></Text> <Text text="2: 랜덤으로 채워집니다"></Text>
+      </HBox>
+      <Input id="idInput"></Input>
+      <Button text="Random" press="onRandomPress"></Button>
+      </VBox>
+
+      <t:Table rows="{list>/rows}">        
+        <t:extension>
+          <OverflowToolbar>      
+            <Title text="랜덤 목록 리스트"></Title>
+          </OverflowToolbar>
+        </t:extension>
+        <t:columns>
+        <t:Column>
+          <Label text="Value"></Label>
+            <t:template>
+            <Text text="{list>text}"></Text>
+            </t:template>
+        </t:Column>
+        </t:columns>
+        
+      </t:Table>
+    </Page>
+</mvc:View>
