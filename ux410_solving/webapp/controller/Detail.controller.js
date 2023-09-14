@@ -27,9 +27,11 @@ sap.ui.define([
             console.log(oParam.param);
             debugger;
             let sPath = oModel.createKey('/Order_Details',{
-              OrderID: oParam.param
+              OrderID: oParam.param,
+              ProductID: oParam.param2
             });
-            this.getView().bindElement(`/Order_Details(OrderID=10248)`);
+
+            this.getView().bindElement(sPath);
 
 
           }

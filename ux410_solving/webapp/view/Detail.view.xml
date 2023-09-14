@@ -5,21 +5,89 @@
   xmlns:f="sap.ui.layout.form"
   xmlns:core="sap.ui.core"
   xmlns:uxap="sap.uxap">
-  <uxap:ObjectPageLayout>
+  
+<uxap:ObjectPageLayout id="ObjectPageLayout"
+    showTitleInHeaderContent="true"
+    showEditHeaderButton="true"
+    editHeaderButtonPress="handleEditBtnPress"
+    upperCaseAnchorBar="false">
+    <uxap:headerTitle>
+        <uxap:ObjectPageDynamicHeaderTitle>
+            <uxap:expandedHeading>
+                <HBox>
+                    <Title text="Order ID : {OrderID}" wrapping="true"/>
+                </HBox>
+            </uxap:expandedHeading>
+        </uxap:ObjectPageDynamicHeaderTitle>
+    </uxap:headerTitle>
+
+    <uxap:headerContent>
+        <FlexBox wrap="Wrap">
+            <Text text='Order detail View Details'></Text>
+        </FlexBox>
+    </uxap:headerContent>
+
+    <uxap:sections>
+        <uxap:ObjectPageSection titleUppercase="false" id="goalsSection" title="Info">
+            <uxap:subSections>
+                <uxap:ObjectPageSubSection id="goalsSectionSS1">
+                    <uxap:blocks>
+                        <f:SimpleForm id="SimpleFormDisplay354"
+                        editable="false"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false" >
+                        <f:content>
+                            <Label text="Order ID" />
+                            <Text id="OrderID" text="{OrderID}" />
+                            <Label text="Product ID" />
+                            <Text id="ProductID" text="{ProductID}" />
+                            <Label text="Unit Price" />
+                            <Text id="UnitPrice" text="{UnitPrice}" />
+                            <Label text="Quantity" />
+                            <Text id="Quantity" text="{Quantity}" />
+                            <Label text="Discount" />
+                            <Text id="Discount" text="{Discount}" />
+                        </f:content>
+                    </f:SimpleForm>     
+                    </uxap:blocks>
+                </uxap:ObjectPageSubSection>
+            </uxap:subSections>
+        </uxap:ObjectPageSection>
+
+    </uxap:sections>
+    
+</uxap:ObjectPageLayout>
+
+  
+  <!-- <uxap:ObjectPageLayout>
     <uxap:headerContent>
       <VBox class="sapUiSmallMargin">
-      <f:SimpleForm  editable="false" layout="ResponsiveGridLayout" title="{OrderID}" labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
-        <f:content>
-          <Text id="nameText" text="Order Detail view Details"/>
-          <HBox>
-              <Label text="OrderID" />
-				      <Text text="{OrderID}" />
-          </HBox>
-        </f:content>
-      </f:SimpleForm>
+      <f:SimpleForm editable="false" layout="ResponsiveGridLayout" title="가나다" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+      <f:content >
+      <core:Title text="{OrderID}" />
+        <Label text="OrderID" />
+        <Text text="{OrderID}" />
+        <Label text="ProductID" />
+        <Text text="{ProductID}" />
+        
+      </f:content>
+      
+    </f:SimpleForm>
     </VBox>
     </uxap:headerContent>
     
 
-  </uxap:ObjectPageLayout>
+  </uxap:ObjectPageLayout> -->
 </mvc:View>

@@ -45,10 +45,13 @@ sap.ui.define([
             },
             onNavDetial:function (params) {
               
-              let ID = params.getParameters().data[0].data.OrderID
+              let OrderID = params.getParameters().data[0].data.OrderID
+              let ProductID = params.getParameters().data[0].data.ProductID
               let oRouter = this.getOwnerComponent().getRouter();
+              debugger;
               oRouter.navTo('RouteDetail',{
-                param: ID
+                param:OrderID,
+                param2:ProductID
               });
             }
           
