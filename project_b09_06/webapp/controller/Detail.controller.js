@@ -39,12 +39,11 @@ sap.ui.define([
           debugger;
           oModel.read(sPath,{ //모델을 읽을 건데 그 안의 Orders를 읽겠다 . 처음에는 엔터티셋이름이 들어감
             urlParameters:{
-              '$expand':'Order_Details'
+              $expand:'Order_Details'
             },
             success: function (oReturn) { //데이터 갖고 오기 성공하면 success실행
-              let game = oReturn.Order_Details;
-              // this.getView().setModel(game);
-              console.log(oReturn);
+            
+              
             },  
             error:function (oError) {
               console.log('error');

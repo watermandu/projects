@@ -42,8 +42,9 @@
         </f:DynamicPageHeader>
     </f:header>
     <f:content>
+    
     <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
-                height="80%" width="100%" vizType="bar"
+                height="80%" width="100%" vizType="column"
                 selectData="onNavDetial"
                 >
             <viz:dataset>

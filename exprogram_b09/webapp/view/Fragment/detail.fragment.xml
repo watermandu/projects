@@ -1,0 +1,76 @@
+<c:FragmentDefinition xmlns:c="sap.ui.core"
+  xmlns="sap.m"
+  xmlns:t="sap.ui.table"
+  xmlns:viz="sap.viz.ui5.controls"
+  xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+  xmlns:viz.data="sap.viz.ui5.data">
+  <Dialog id = "idDialog" beforeOpen="onBeforeOpen" title="Carrname" contentHeight="80%" contentWidth="60%" resizable="true" draggable="true">
+    <content>
+      <HBox>
+        <VBox>
+          <t:Table width="auto" id='idOrderTable' rows="{ path:'view>/results'}" selectionMode="Single" visibleRowCount="7" paste="onPaste" ariaLabelledBy="title">
+            <t:extension>
+              <OverflowToolbar style="Clear">
+                <Title id="title" text="Lufthansa"/>
+              </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+              <t:Column width="11rem">
+                <Label text="Carrid " />
+                <t:template>
+                  <Text text="{view>Carrid}" wrapping="false" />
+                </t:template>
+              </t:Column>
+              <t:Column width="11rem">
+                <Label text="Connid " />
+                <t:template>
+                  <Text text="{view>Connid}" wrapping="false" />
+                </t:template>
+              </t:Column>
+              <t:Column width="11rem">
+                <Label text="Seatsmax " />
+                <t:template>
+                  <Text text="{view>Seatsmax}" wrapping="false" />
+                </t:template>
+              </t:Column>
+              <t:Column width="11rem">
+                <Label text="Seatsocc " />
+                <t:template>
+                  <Text text="{view>Seatsocc}" wrapping="false" />
+                </t:template>
+              </t:Column>
+            </t:columns>
+          </t:Table>
+        </VBox>
+
+        <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="80%" width="50%" vizType="column" >
+          <viz:dataset>
+            <viz.data:FlattenedDataset id = "idF4lattenedDataset" data="{
+              path:'view>/results'
+              }">
+              <viz.data:dimensions>
+                <viz.data:DimensionDefinition name="항공편 번호" value="{view>Connid}" />
+              </viz.data:dimensions>
+              <viz.data:measures>
+                <viz.data:MeasureDefinition name="총 좌석" value="{view>Seatsmax}" />
+                <viz.data:MeasureDefinition name="예약 좌석" value="{view>Seatsocc}" />
+              </viz.data:measures>
+            </viz.data:FlattenedDataset>
+          </viz:dataset>
+
+          <viz:feeds>
+            <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Connid" />
+            <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Seatsmax,Seatsocc" />
+          </viz:feeds>
+
+        </viz:VizFrame>
+
+      </HBox>
+    </content>
+    <endButton >
+      <Button text="close" press = "onClose"></Button>
+    </endButton>
+  </Dialog>
+
+
+</c:FragmentDefinition>

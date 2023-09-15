@@ -1,0 +1,85 @@
+<mvc:View controllerName="exam.exprogramb09.controller.Detail2"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+  xmlns="sap.ui.table"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+    height="100%"
+    xmlns:core="sap.ui.core"
+    >
+    <m:Page id="page" title="{i18n>title}">
+          <m:content>
+			<Table
+				rows="{view2>/results}"
+				selectionMode="Single"
+				visibleRowCount="7"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title id="title" text="FLight List"/>
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column width="11rem">
+						<m:Label text="CARRID" />
+						<template>
+							<m:Text text="{view2>CARRID}" wrapping="false" />
+						</template>
+					</Column>
+
+          <Column width="11rem">
+						<m:Label text="CONNID" />
+						<template>
+							<m:Text text="{view2>CONNID}" wrapping="false" />
+						</template>
+					</Column>
+
+          <Column width="11rem">
+						<m:Label text="FLDATE" />
+						<template>
+							<m:Text text="{ path: 'FLDATE',
+              formatter: '.formatter.fnDateString'}" wrapping="false" />
+						</template>
+					</Column>
+
+          <Column width="11rem">
+						<m:Label text="PRICE" />
+						<template>
+							<m:Text text="{view2>PRICE}" wrapping="false" />
+						</template>
+					</Column>
+
+          <Column width="11rem">
+						<m:Label text="CURRENCY" />
+						<template>
+							<m:Text text="{view2>CURRENCY}" wrapping="false" />
+						</template>
+					</Column>
+
+          <Column width="11rem">
+						<m:Label text="PLANETYPE" />
+						<template>
+							<m:Text text="{view2>PLANETYPE}" wrapping="false" />
+						</template>
+					</Column>
+
+          <Column width="11rem">
+						<m:Label text="SEATSMAX" />
+						<template>
+							<m:Text text="{view2>SEATSMAX}" wrapping="false" />
+						</template>
+					</Column>
+
+          <Column width="11rem">
+						<m:Label text="SEATSOCC" />
+						<template>
+							<m:Text text="{view2>SEATSOCC}" wrapping="false" />
+						</template>
+					</Column>
+
+				</columns>
+			</Table>
+		</m:content>
+    </m:Page>
+</mvc:View>

@@ -1,0 +1,71 @@
+<mvc:View controllerName="exam.exprogramb09.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    >
+    <Page id="page" title="{i18n>title}">
+          <HBox>
+            <VBox width = "300px" class="sapUiLargeMargin" >
+              <Label text="Currency Code"></Label>
+              <ComboBox width="100%" id = "idCombo">
+                <core:ListItem key="USD" text="USD" />
+                <core:ListItem key="EUR" text="EUR" />
+                <core:ListItem key="KRW" text="KRW" />
+
+              </ComboBox>
+              <Label text="Carrier Name"></Label>
+              <Input id="idInput"></Input>
+              <Button text="Search" width="100%" type = "Emphasized" press="onSearch"></Button> 
+            </VBox>
+            
+            <VBox class="sapUiLargeMargin">
+            <Table 
+            mode= "SingleSelect"
+            id="idTable" inset="false" items="{ path:'/carrierSet',  parameters: {'expand' : 'to_Item'} }" 
+                width = "1000px">
+              <headerToolbar>
+                <OverflowToolbar>
+                  <content>
+                    <Title text="Carrier List" level="H2"/>
+                    <ToolbarSpacer />
+                    <Button text="항공편 예약 상세" press="onClick"></Button>
+                  </content>
+                </OverflowToolbar>
+              </headerToolbar>
+              <columns>
+                <Column width="12em" >
+                  <Text text="Carrid" />
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true" >
+                  <Text text="Carrname" />
+                </Column>
+                <Column minScreenWidth="Desktop" demandPopin="true" >
+                  <Text text="Currcode" />
+                </Column>
+                <Column minScreenWidth="Desktop" demandPopin="true" >
+                  <Text text="Url" />
+                </Column>
+                <Column minScreenWidth="Desktop" demandPopin="true" >
+                  <Text text="Length" />
+                </Column>
+                <Column minScreenWidth="Desktop" demandPopin="true" >
+                  <Text text="Detail" />
+                </Column>
+              </columns>
+              <items>
+                <ColumnListItem vAlign="Middle">
+                  <cells>
+                    <Text text="{Carrid}" />
+                    <Text text="{Carrname}" />
+                    <Text text="{Currcode}" />
+                    <Text text="{Url}" />
+                    <Text text= "{= ${to_Item}.length}"/>
+                    <Button text= "예약 현황" enabled= "{= ${to_Item}.length > 0}" press="onDialog"/>
+                  </cells>
+                </ColumnListItem>
+              </items>
+            </Table>
+            </VBox>
+          </HBox>
+    </Page>
+</mvc:View>
