@@ -1,0 +1,47 @@
+<c:FragmentDefinition xmlns:c="sap.ui.core"
+  xmlns="sap.m"
+  xmlns:t="sap.ui.table"
+
+  width="100%">
+  <Dialog id = "myDialog" beforeOpen="onBeforeOpen" title="Carrname" contentHeight="100%" contentWidth="100%" resizable="true" draggable="true">
+    <content>
+      <HBox>
+        <VBox>
+          <t:Table width="50%" id='idOrderTable' rows="{/SCARRSet}" selectionMode="Single" visibleRowCount="7" paste="onPaste" ariaLabelledBy="title" >
+            <t:extension>
+              <OverflowToolbar style="Clear">
+                <Title id="title" text="Scarr"/>
+              </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+              <t:Column width="11rem">
+                <Label text="Carrid " />
+                <t:template>
+                  <Text text="{Carrid}" wrapping="false" />
+                </t:template>
+              </t:Column>
+              <t:Column width="11rem">
+                <Label text="Carrname " />
+                <t:template>
+                  <Text text="{Carrname}" wrapping="false" />
+                </t:template>
+              </t:Column>
+              <t:Column width="11rem">
+                <Label text="Currcode " />
+                <t:template>
+                  <Text text="{Currcode}" wrapping="false" />
+                </t:template>
+              </t:Column>
+
+            </t:columns>
+          </t:Table>
+        </VBox>
+      </HBox>
+    </content>
+    <endButton >
+      <Button text="close" press = "onClose"></Button>
+    </endButton>
+  </Dialog>
+
+
+</c:FragmentDefinition>

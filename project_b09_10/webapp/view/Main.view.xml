@@ -1,0 +1,70 @@
+<mvc:View controllerName="projectb0910.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m">
+    <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageHeader objectTitle="Section sample">
+			</ObjectPageHeader>
+		</headerTitle>
+
+		<headerContent>
+			<m:Button text="Scarr Table" press="onButton"></m:Button>
+		</headerContent>
+
+		<sections>
+		
+			<ObjectPageSection titleUppercase="false" title="Section 5">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+						<m:Table 
+            mode= "SingleSelectMaster"
+            id="idTable" inset="false" items="{/SBOOKSet}" 
+                width = "1000px">
+              <m:columns>
+                <m:Column width="12em" >
+                  <m:Text text="Carrid" />
+                </m:Column>
+                <m:Column width="12em" >
+                  <m:Text text="Connid" />
+                </m:Column>
+                <m:Column width="12em" >
+                  <m:Text text="Fldate" />
+                </m:Column>
+                <m:Column width="12em" >
+                  <m:Text text="Bookid" />
+                </m:Column>
+              </m:columns>
+              <m:items>
+                <m:ColumnListItem vAlign="Middle">
+                  <m:cells>
+                    <m:Text text="{Carrid}" />
+                    <m:Text text="{Connid}" />
+                    <m:Text text="{Fldate}" />
+                    <m:Text text="{Bookid}" />
+                  </m:cells>
+                </m:ColumnListItem>
+              </m:items>
+              
+            </m:Table>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+      <ObjectPageSection titleUppercase="false" title="Section 6">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:Text text="가나다"></m:Text>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+
+		</sections>
+
+	</ObjectPageLayout>
+</mvc:View>

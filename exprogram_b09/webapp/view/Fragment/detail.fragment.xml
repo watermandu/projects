@@ -3,15 +3,16 @@
   xmlns:t="sap.ui.table"
   xmlns:viz="sap.viz.ui5.controls"
   xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
-  xmlns:viz.data="sap.viz.ui5.data">
+  xmlns:viz.data="sap.viz.ui5.data"
+  width="100%">
   <Dialog id = "idDialog" beforeOpen="onBeforeOpen" title="Carrname" contentHeight="80%" contentWidth="60%" resizable="true" draggable="true">
     <content>
       <HBox>
         <VBox>
-          <t:Table width="auto" id='idOrderTable' rows="{ path:'view>/results'}" selectionMode="Single" visibleRowCount="7" paste="onPaste" ariaLabelledBy="title">
+          <t:Table width="50%" id='idOrderTable' rows="{ path:'view>/results'}" selectionMode="Single" visibleRowCount="7" paste="onPaste" ariaLabelledBy="title" >
             <t:extension>
               <OverflowToolbar style="Clear">
-                <Title id="title" text="Lufthansa"/>
+                <Title id="title" text="{Lufthansa}"/>
               </OverflowToolbar>
             </t:extension>
             <t:columns>
@@ -42,7 +43,7 @@
             </t:columns>
           </t:Table>
         </VBox>
-
+        
         <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="80%" width="50%" vizType="column" >
           <viz:dataset>
             <viz.data:FlattenedDataset id = "idF4lattenedDataset" data="{
@@ -61,10 +62,11 @@
           <viz:feeds>
             <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Connid" />
             <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Seatsmax,Seatsocc" />
+            
           </viz:feeds>
 
         </viz:VizFrame>
-
+        
       </HBox>
     </content>
     <endButton >

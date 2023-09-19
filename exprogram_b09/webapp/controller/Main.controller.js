@@ -63,6 +63,7 @@ sap.ui.define([
                     let data = oReturn.to_Item;
                     // let data = oReturn.to_Item.results;
                     oModel.setProperty('/',data);
+                    debugger;
                     
                   },  
                   error:function (oError) {
@@ -84,11 +85,11 @@ sap.ui.define([
                   oDialog.open();
                 }.bind(this));
                 }
-                let aFliter1 = new Filter({
-                  path: 'Carrid',
-                  operator: 'EQ',
-                  value1: oParam
-                });
+                // let aFliter1 = new Filter({
+                //   path: 'Carrid',
+                //   operator: 'EQ',
+                //   value1: oParam
+                // });
 
                 
 

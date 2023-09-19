@@ -12,11 +12,14 @@ sap.ui.define([
       return Controller.extend("exam.exprogramb09.controller.Detail2", {
         formatter: {
           fnDateString: function (oDate) {
-            let oDateTimeInstance =
-              sap.ui.core.format.DateFormat.getTimeInstance({
-                pattern: "yyyy-MM-dd",
+            if(oDate){
+              let oDateTimeInstance =
+              sap.ui.core.format.DateFormat.getDateTimeInstance({
+                pattern: "yyyy-MM-dd"
               });
             return oDateTimeInstance.format(oDate);
+            }
+          
           },
         },
         

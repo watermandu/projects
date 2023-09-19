@@ -14,7 +14,8 @@
 				selectionMode="Single"
 				visibleRowCount="7"
 				paste="onPaste"
-				ariaLabelledBy="title">
+				ariaLabelledBy="title"
+        >
 				<extension>
 					<m:OverflowToolbar style="Clear">
 						<m:Title id="title" text="FLight List"/>
@@ -38,7 +39,7 @@
           <Column width="11rem">
 						<m:Label text="FLDATE" />
 						<template>
-							<m:Text text="{ path: 'FLDATE',
+							<m:Text text="{ path: 'view2>FLDATE',
               formatter: '.formatter.fnDateString'}" wrapping="false" />
 						</template>
 					</Column>
