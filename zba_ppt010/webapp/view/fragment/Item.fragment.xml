@@ -1,0 +1,117 @@
+<c:FragmentDefinition 
+    xmlns:c="sap.ui.core"
+    xmlns="sap.m" xmlns:t="sap.ui.table"
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data">
+    <Dialog id="idStatusDialog" title="BOM 상세조회" contentHeight="100%" contentWidth="100%">
+        <HBox>
+            <VBox width="50%">
+
+            <!-- 예약 현황 Table -->
+                <t:Table
+                    id="idStatusTable"
+                    rows="{/ZBA_PPT010Set/ZBA_PPT020Set}"
+                    selectionMode="None"
+                    
+                    paste="onPaste"
+                    ariaLabelledBy="title">
+                    <t:columns>
+                        <t:Column width="100%">
+                            <Label text="STLNR" />
+                            <t:template>
+                                <Text text="{Stlnr}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="STLTY" />
+                            <t:template>
+                                <Text text="{Stlty}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="MATNR" />
+                            <t:template>
+                                <Text text="{Matnr}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="BOMTEXT" />
+                            <t:template>
+                                <Text text="{Bomtest}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="BMENG" />
+                            <t:template>
+                                <Text text="{Bmeng}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="MEINS" />
+                            <t:template>
+                                <Text text="{Meins}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="PPNET" />
+                            <t:template>
+                                <Text text="{Ppnet}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="WAERS" />
+                            <t:template>
+                                <Text text="{Waers}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="DELET" />
+                            <t:template>
+                                <Text text="{Delet}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+                </VBox>
+
+            <!-- 예약 현황 차트 -->
+        <VBox width="50%">
+            <viz:VizFrame id="idChart" vizType="stacked_column"
+            uiConfig="{applicationSet:'fiori'}"
+            vizProperties="{
+                'legendGroup': {
+                    'layout' : {'position': 'left'} },
+                'title': {'visible':true, 'text':'예약 현황'},
+                'plotArea': {
+                    drawingEffect: 'glossy',
+                    dataLabel : {visible : true}}
+                }">
+                <viz:dataset> <!-- 데이터 세팅 -->
+                    <viz.data:FlattenedDataset id="idFlatDatSet" data="{bookList>/results}">
+                        <viz.data:dimensions> <!-- x축 -->
+                            <viz.data:DimensionDefinition name="항공편 번호" value="{bookList>Connid}" />
+                          </viz.data:dimensions>
+
+                          <viz.data:measures> <!-- y축 -->
+                            <viz.data:MeasureDefinition name="예약 좌석" value="{bookList>Seatsocc}"/>
+                            <viz.data:MeasureDefinition name="총 좌석" value="{bookList>Seatsmax}"/>
+                          </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds> <!-- 차트 관련 UI 설정 -->
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="항공편 번호" /> <!-- x축 -->
+                    <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="예약 좌석,총 좌석" /> <!-- y축 -->
+                </viz:feeds>
+            </viz:VizFrame>
+        </VBox>
+            </HBox>
+
+            <!-- Dialog 닫기 버튼 -->
+            <endButton> 
+                <Button text="Close" press="onClose" />
+            </endButton>
+            
+    </Dialog>
+</c:FragmentDefinition>

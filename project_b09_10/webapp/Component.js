@@ -1,6 +1,9 @@
 /**
  * eslint-disable @sap/ui5-jsdocs/no-jsdoc
  */
+//시스템 내에서 사용하는 경로 정보를 얻는다
+// 안에 들어가는 값은 manifest.json의 sap.app =>id (app 기준 경로 )
+var _rootPath = jQuery.sap.getModulePath('projectb0910').split('/~')[0];
 
 sap.ui.define([
         "sap/ui/core/UIComponent",

@@ -52,10 +52,10 @@ sap.ui.define([
               this.getView().setModel(new JSONModel(),'view')
               let oModel = this.getView().getModel('view');
                 let oParam= oEvent.getSource().getParent().getBindingContext().getObject().Carrid
-                debugger;
+                
                 let sPath = oDataModel.createKey('/carrierSet',{
                   Carrid : oParam});
-                  
+                  debugger;
                   oDataModel.read(sPath,{
                     urlParameters: { $expand: "to_Item" },
                   success: function (oReturn) { 

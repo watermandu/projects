@@ -4,13 +4,13 @@
   xmlns:m="sap.m">
   <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
     <headerTitle>
-      <ObjectPageHeader objectTitle="Section sample">
+      <ObjectPageHeader objectTitle="배포 프로젝트">
       </ObjectPageHeader>
     </headerTitle>
 
     <headerContent>
       <m:Input showValueHelp="true" valueHelpRequest="onButton" width="20%"></m:Input>
-
+      
     </headerContent>
 
     <sections>
@@ -19,6 +19,7 @@
         <subSections>
           <ObjectPageSubSection titleUppercase="false">
             <blocks>
+              
               <m:Table mode= "SingleSelectMaster" id="idTable" inset="false" items="{/SBOOKSet}" 
                 width = "1000px">
                 <m:columns>
@@ -56,7 +57,11 @@
         <subSections>
           <ObjectPageSubSection titleUppercase="false">
             <blocks>
-              <m:Text text="가나다"></m:Text>
+              <m:Image src="../img/cat.jpg" width="100px" />
+              <m:Image src="../img/2.gif" width="100px" />
+              <m:Image  id="idImg" width="100px" />
+              <m:Image src="https://health.chosun.com/site/data/img_dir/2023/05/31/2023053102582_0.jpg" width="100px" />
+              <m:Image src="https://blog.kakaocdn.net/dn/cdSkyP/btrsxjLUBi4/jQZSU0tIXPFMWEekWP3FA1/img.jpg" width="80%" />
             </blocks>
           </ObjectPageSubSection>
         </subSections>

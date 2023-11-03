@@ -12,7 +12,7 @@ sap.ui.define([
 
         return Controller.extend("projectb0910.controller.Main", {
             onInit: function () {
-
+              this.byId("idImg").setSrc(_rootPath + "/img/2.gif");
             },
             onButton: function () { 
               let oModel = this.getView().getModel('scarr');

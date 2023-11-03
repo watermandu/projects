@@ -46,9 +46,7 @@
         
         <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="80%" width="50%" vizType="column" >
           <viz:dataset>
-            <viz.data:FlattenedDataset id = "idF4lattenedDataset" data="{
-              path:'view>/results'
-              }">
+            <viz.data:FlattenedDataset id = "idF4lattenedDataset" data="{'view>/results'}">
               <viz.data:dimensions>
                 <viz.data:DimensionDefinition name="항공편 번호" value="{view>Connid}" />
               </viz.data:dimensions>

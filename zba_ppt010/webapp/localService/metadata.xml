@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZBA_PPT010_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZBA_PPT010" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Stlty"/>
+                    <PropertyRef Name="Matnr"/>
+                    <PropertyRef Name="Rttid"/>
+                </Key>
+                <Property Name="Stlty" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="BOM 번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="자재번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rttid" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="공정 번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnm" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="자재명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mtart" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="자재유형" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rcost" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="원부자재 단가" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pcost" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="공정비용" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ppnet" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="제조원가" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="Delet" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="삭제 플래그" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ZBA_PPT020Set" Relationship="ZBA_PPT010_SRV.ppt010TOppt020" FromRole="FromRole_ppt010TOppt020" ToRole="ToRole_ppt010TOppt020"/>
+            </EntityType>
+            <EntityType Name="ZBA_PPT020" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Stlnr"/>
+                    <PropertyRef Name="Stlty"/>
+                </Key>
+                <Property Name="Stlnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="BOM 상세번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stlty" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="BOM 번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="자재번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rttid" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="공정 번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mtart" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="자재유형" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bomtext" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="상세 설명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bmeng" Type="Edm.Decimal" Nullable="false" Precision="30" Scale="0" sap:unicode="false" sap:unit="Meins" sap:label="자재 수량" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Ppnet" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="제조원가" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="Delet" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="삭제 플래그" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="ppt010TOppt020" sap:content-version="1">
+                <End Type="ZBA_PPT010_SRV.ZBA_PPT010" Multiplicity="1" Role="FromRole_ppt010TOppt020"/>
+                <End Type="ZBA_PPT010_SRV.ZBA_PPT020" Multiplicity="*" Role="ToRole_ppt010TOppt020"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ppt010TOppt020">
+                        <PropertyRef Name="Rttid"/>
+                        <PropertyRef Name="Matnr"/>
+                        <PropertyRef Name="Stlty"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ppt010TOppt020">
+                        <PropertyRef Name="Rttid"/>
+                        <PropertyRef Name="Matnr"/>
+                        <PropertyRef Name="Stlnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZBA_PPT010_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZBA_PPT010Set" EntityType="ZBA_PPT010_SRV.ZBA_PPT010" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZBA_PPT020Set" EntityType="ZBA_PPT010_SRV.ZBA_PPT020" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="HeaderTOItemSet" Association="ZBA_PPT010_SRV.ppt010TOppt020" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZBA_PPT010Set" Role="FromRole_ppt010TOppt020"/>
+                    <End EntitySet="ZBA_PPT020Set" Role="ToRole_ppt010TOppt020"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://sapmento.mento.co.kr:8001/sap/opu/odata/sap/ZBA_PPT010_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://sapmento.mento.co.kr:8001/sap/opu/odata/sap/ZBA_PPT010_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
