@@ -21,7 +21,7 @@
                         <core:ListItem text="{Matnr}"/>
                     </ComboBox>
                     <Label text="공정번호"/>
-                      <ComboBox
+                      <ComboBox 
                         id="idcomboBox3"
                         items="{rtlist>/}"
                         width="100%">
@@ -45,9 +45,9 @@
                     >
                 <headerToolbar>
                     <Toolbar>
-                        <Title text="ZBA_PPT010 TABLE" level="H2"/>
+                        <Title text="BOM Header" level="H2"/>
                         <ToolbarSpacer />
-                        <Button text="항공편 예약 상세" press="onDetail" />
+                        <Button text="---" press="onDetail" />
                     </Toolbar>
                 </headerToolbar>
                 <columns>

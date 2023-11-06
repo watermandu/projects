@@ -28,7 +28,7 @@ sap.ui.define([
                 aFilter.push(
                   new Filter({
                     path: "Stlty",
-                    operator: "EQ",
+                    operator: "EQ" ,
                     value1: input1
                   })
                 )
@@ -39,7 +39,7 @@ sap.ui.define([
                 aFilter.push(
                   new Filter({
                     path: "Matnr",
-                    operator: "EQ",
+                    operator: "Contains",
                     value1: input2         
                   })
                 )
@@ -49,7 +49,7 @@ sap.ui.define([
                 aFilter.push(
                   new Filter({
                     path: "Rttid",
-                    operator: "EQ",
+                    operator: "Contains",
                     value1: input3
                     
                   })
@@ -61,28 +61,167 @@ sap.ui.define([
               this.byId("idPPT010Table").getBinding('items').filter(aFilter);
             },
 
-            onSelectionChange:function(oEvent){
-              let key = oEvent.getParameters().listItem.getBindingContextPath();
-              key = key.slice(15,28);
+            onSelectionChange: function (oEvent) {
+              let odataModel = this.getOwnerComponent().getModel();
+              // let sPath = oEvent.getSource().getBindingContext().sPath;
+              let sPath = oEvent.getParameters().listItem.getBindingContextPath();
 
+              odataModel.read(sPath,
+                {
+                    urlParameters: {
+                      $expand: "ZBA_PPT020Set",
+                    },
+                success:function(oReturn){
+                  debugger;
+                  let oModel = new JSONModel(oReturn);
+                  this.byId("idStatusTable").setModel(oModel,"Dialog");
+                }.bind(this),
+                error:function(oError){
+                  alert("테이블 정보 갖고오기 실패");
+                }
+              });
+              let oDialog = this.byId("idDialog");
+                if (!oDialog) {
+                  this.loadFragment({
+                    name: "zbappt010.view.fragment.Item", //load 할 파일 경로
+                    type: "XML",
+                  }).then(
+                    function (oDialog) {
+                      oDialog.open();
+                    }.bind(this)
+                  );
+                } else {
+                  oDialog.open();
+                }
+              },
+
+              onClose:function(){
+
+                
+              }
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //   // var oDataModel = this.getOwnerComponent().getModel(); //ODataModel
+            //   // var oButton = oEvent.getSource();
+            //   // var oTable = oButton.getParent();
+            //   // var nIndex = oTable.sId.substring(73);
+      
+            //   // var sCarrid = oEvent
+            //   //   .getSource()
+            //   //   .getBindingContext()
+            //   //   .sPath.substr(13, 2);
+      
+            //   // var sPath = oDataModel.createKey("/carrierSet", {
+            //   //   Carrid: sCarrid,
+            //   // });
+      
+            //   // var sPath = oEvent.getSource().getBindingContext().sPath;
               
-            this.getView().getModel().read(key,{
-              urlParameters: {'$expand': "ZBA_PPT020Set"},
-              success: function(oReturn) {
-                return this.onFragment(oReturn.ZBA_PPT020Set,key).bind(this)
-              }
-            })
+            //   let sPath = oEvent.getParameters().listItem.getBindingContextPath();
+            //   // sPath = "(" + sPath.slice(15,29) + ")";
+            //   let key = sPath.substr(15,5);
+            //   let value = sPath.substr(21,8);
+            //   sPath = "/" + key  + "(" + value + ")";
+
+            //   var oModel = this.getOwnerComponent().getModel();
+            //   oModel.read(sPath, {
+            //     urlParameters: {
+            //       $expand: "ZBA_PPT020Set",
+            //     },
+            //     success: function (oReturn) {
+            //       var oModel = new JSONModel(oReturn);
+            //       this.getView().setModel(oModel, "dialog");
+            //     }.bind(this),
+            //     error: function (oError) {},
+            //   });
+
+      
+            //   var oDialog = this.byId("idDialog");
+            //   if (!oDialog) {
+            //     this.loadFragment({
+            //       name: "zbappt010.view.fragment.Item", //load 할 파일 경로
+            //       type: "XML",
+            //     }).then(
+            //       function (oDialog) {
+            //         oDialog.open();
+            //       }.bind(this)
+            //     );
+            //   } else {
+            //     oDialog.open();
+            //   }
+            // },
+
+
+
+
+
+
+
+
+
+
+
+
+            // onFragment: function(oReturn, key) {
+            //   let oDialog = this.byId("idStatusDialog");
+            //   if (oDialog){
+            //     oDialog.bindElement(key);
+            //     oDialog.setModel(new JSONModel(oReturn),"Item");
+            //     oDialog.open();
+            //   }
+            //   else{
+            //     this.loadFragment({
+            //       name: "zbappt010.view.fragment.Item",
+            //       type: "XML"
+            //     }).then(
+            //       function(oDialog){
+            //         oDialog.bindElement(key);
+            //         oDialog.setModel(new JSONModel(oReturn),"Item");
+            //         oDialog.open();
+            //         let controller = this.byId("idStatusDialog");
+            //       }.bind(this)
+            //     );
+            //   }
+
+            // },
+
+
+            // onSelectionChange:function(oEvent){
+            //   let key = oEvent.getParameters().listItem.getBindingContextPath();
+            //   key = "(" + key.slice(15,29) + ")";
+            //   // let oDialog = this.byId("idStatusDialog");
+
+            //   this.getView().getModel().read(key,{
+            //   urlParameters: {'$expand': "ZBA_PPT020Set"},
+            //   success: function(oReturn) {
+            //     return this.onFragment(oReturn.ZBA_PPT020Set,key).bind(this)
+            //   }
+            // })
+
+            //   // if (oDialog){
+            //   //   // oDialog.byId("idStatusTable").setModel();
+            //   //   oDialog.open();
+            //   // }
+            //   // else{
+            //   //   this.loadFragment({
+            //   //     name: "zbappt010.view.fragment.Item",
+            //   //     type: "XML"
+            //   //   }).then(
+            //   //     function(oDialog){
+            //   //       let controller = this.byId("idStatusDialog");
+            //   //     }.bind(this)
+            //   //   );
+            //   // }
             
-            },
+            
+            // },
 
-            onFragment: function(oReturn, key) {
-              let oDialog = this.byId("idStatusDialog");
-
-              if (oDialog){
-                oDialog.byId("idStatusTable").setModel
-              }
-
-            },
+            
 
         });
     });
