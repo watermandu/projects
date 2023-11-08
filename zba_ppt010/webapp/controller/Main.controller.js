@@ -2,13 +2,15 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/Filter",
-    'sap/ui/model/FilterOperator'
+    'sap/ui/model/FilterOperator',
+    "sap/ui/core/Fragment",
+    
 
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel, Filter, FilterOperator) {
+    function (Controller, JSONModel, Filter, FilterOperator,Fragment) {
         "use strict";
 
         return Controller.extend("zbappt010.controller.Main", {
@@ -28,7 +30,7 @@ sap.ui.define([
                 aFilter.push(
                   new Filter({
                     path: "Stlty",
-                    operator: "EQ" ,
+                    operator: "Contains" ,
                     value1: input1
                   })
                 )
@@ -74,21 +76,35 @@ sap.ui.define([
                 success:function(oReturn){
                   debugger;
                   let oModel = new JSONModel(oReturn);
-                  this.byId("idStatusTable").setModel(oModel,"Dialog");
+                  // this.byId("idStatusTable").setModel(oModel,"Dialog"); // 구버전
+                  sap.ui.getCore().setModel(oModel,"Dialog"); //   신문법
                 }.bind(this),
                 error:function(oError){
                   alert("테이블 정보 갖고오기 실패");
                 }
               });
-              let oDialog = this.byId("idDialog");
+              // let oDialog = this.byId("idDialog"); // 구문법
+              let oDialog = sap.ui.getCore().byId("idDialog"); // 구문법
                 if (!oDialog) {
-                  this.loadFragment({
-                    name: "zbappt010.view.fragment.Item", //load 할 파일 경로
-                    type: "XML",
-                  }).then(
+                  
+                  // 신문법
+                  Fragment.load({
+                    name: "zbappt010.view.fragment.Item",
+                    type: 'XML',
+                    controller: this
+                  })
+
+                  // 구문법
+                  // this.loadFragment({
+                  //   name: "zbappt010.view.fragment.Item", //load 할 파일 경로
+                  //   type: "XML",
+                  // })
+
+                  .then(
                     function (oDialog) {
                       oDialog.open();
-                    }.bind(this)
+                    }
+                    .bind(this) 
                   );
                 } else {
                   oDialog.open();
@@ -96,8 +112,8 @@ sap.ui.define([
               },
 
               onClose:function(){
-
-                
+                // this.byId("idDialog").close();
+                sap.ui.getCore().byId("idDialog").close();
               }
 
 

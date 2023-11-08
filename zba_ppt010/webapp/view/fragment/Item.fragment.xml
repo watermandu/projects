@@ -4,9 +4,9 @@
     xmlns:viz="sap.viz.ui5.controls" 
     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
     xmlns:viz.data="sap.viz.ui5.data">
-    <Dialog id="idDialog" title="BOM 상세조회" contentHeight="100%" contentWidth="100%">
+    <Dialog id="idDialog" title="BOM Item" contentHeight="auto" contentWidth="auto" draggable="true" resizable="true" >
         <HBox>
-            <VBox width="50%">
+            <VBox width="100%">
 
             <!-- 예약 현황 Table -->
                 <t:Table
@@ -18,55 +18,55 @@
                     ariaLabelledBy="title">
                     <t:columns>
                         <t:Column width="100%">
-                            <Label text="STLNR" />
+                            <Label text="BOM 상세번호" />
                             <t:template>
-                                <Text text="{Dialog>/Stlnr}" wrapping="false" />
+                                <Text text="{Dialog>Stlnr}" wrapping="false" />
                             </t:template>
                         </t:Column>
                         <t:Column width="100%">
-                            <Label text="STLTY" />
+                            <Label text="BOM 번호" />
                             <t:template>
                                 <Text text="{Dialog>Stlty}" wrapping="false" />
                             </t:template>
                         </t:Column>
                         <t:Column width="100%">
-                            <Label text="MATNR" />
+                            <Label text="자재유형" />
                             <t:template>
-                                <Text text="{Dialog>Matnr}" wrapping="false" />
+                                <Text text="{Dialog>Mtart}" wrapping="false" />
                             </t:template>
                         </t:Column>
                         <t:Column width="100%">
-                            <Label text="BOMTEXT" />
+                            <Label text="상세설명" />
                             <t:template>
-                                <Text text="{Dialog>Bomtest}" wrapping="false" />
+                                <Text text="{Dialog>Bomtext}" wrapping="false" />
                             </t:template>
                         </t:Column>
                         <t:Column width="100%">
-                            <Label text="BMENG" />
+                            <Label text="자재수량" />
                             <t:template>
                                 <Text text="{Dialog>Bmeng}" wrapping="false" />
                             </t:template>
                         </t:Column>
                         <t:Column width="100%">
-                            <Label text="MEINS" />
+                            <Label text="단위" />
                             <t:template>
                                 <Text text="{Dialog>Meins}" wrapping="false" />
                             </t:template>
                         </t:Column>
                         <t:Column width="100%">
-                            <Label text="PPNET" />
+                            <Label text="비용" />
                             <t:template>
                                 <Text text="{Dialog>Ppnet}" wrapping="false" />
                             </t:template>
                         </t:Column>
                         <t:Column width="100%">
-                            <Label text="WAERS" />
+                            <Label text="통화키" />
                             <t:template>
                                 <Text text="{Dialog>Waers}" wrapping="false" />
                             </t:template>
                         </t:Column>
                         <t:Column width="100%">
-                            <Label text="DELET" />
+                            <Label text="삭제상태" />
                             <t:template>
                                 <Text text="{Dialog>Delet}" wrapping="false" />
                             </t:template>
