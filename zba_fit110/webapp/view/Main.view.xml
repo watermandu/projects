@@ -1,0 +1,107 @@
+<mvc:View controllerName="zbafit110.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    >
+    <Page id="page" >
+        <content>
+            <HBox>
+            <VBox width="100%">
+            <Table id="idFIT110Table"
+                    mode="SingleSelectMaster"
+                    noDataText="데이터가 없습니다."
+                    sticky="HeaderToolbar,ColumnHeaders"
+                    inset="false"
+                    items="{
+                        path:'/ZBA_FIT110Set'
+                        }"
+                    class="sapFDynamicPageAlignContent"
+                    width="auto"
+                    selectionChange="onSelectionChange"
+                    >
+                <headerToolbar>
+                    <Toolbar>
+                        <ToolbarSpacer />
+                         <Label text="회계연도" />
+                      <ComboBox
+                        id="idcomboBox1"
+                        items="{GJAHR>/}"
+                        width="15em">
+                        <core:ListItem text="{GJAHR>Gjahr}"/>
+                    </ComboBox>
+                    <Label text="전표번호" />
+                      <ComboBox 
+                        id="idcomboBox2"
+                        items="{/ZBA_FIT110Set}"
+                        width="15em">
+                        <core:ListItem text="{Belnr}"/>
+                    </ComboBox>
+                    <Button width="5em" text="Search" type="Emphasized" press="onSearch"/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns >
+                    <Column >
+                        <Text text="회사번호"  />
+                    </Column>
+                    <Column>
+                        <Text text="회계연도" />
+                    </Column>
+                    <Column>
+                        <Text text="전표번호" />
+                    </Column>
+                    <Column>
+                        <Text text="전표유형" />
+                    </Column>
+                    <Column >
+                        <Text text="전기일" />
+                    </Column>
+                    <Column>
+                        <Text text="증빙일" />
+                    </Column>
+                    <Column>
+                        <Text text="전표 Text" />
+                    </Column>
+                    <Column>
+                        <Text text="사원번호" />
+                    </Column>
+                    <Column>
+                        <Text text="생성일" />
+                    </Column>
+                    <Column>
+                        <Text text="역분개 회게연도" />
+                    </Column>
+                    <Column>
+                        <Text text="역분개 전표번호" />
+                    </Column>
+                    <Column>
+                        <Text text="역분개 사유" />
+                    </Column>
+                    
+                </columns>
+                <items>
+                    <ColumnListItem>
+                    <cells>
+                    <Text text="{Bukrs}"/>
+                    <Text text="{Gjahr}"/>
+                    <Text text="{Belnr}"/>
+                    <Text text="{Blart}"/>
+                    <Text text="{Budat}"/>
+                    <Text text="{Bldat}"/>
+                    <Text text="{Bktxt}"/>
+                    <Text text="{Pernr}"/>
+                    <Text text="{Cpudt}"/>
+                    <Text text="{Stjah}"/>
+                    <Text text="{Stblg}"/>
+                    <Text text="{Stgrd}"/>
+
+                   
+                    </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+            </HBox>
+
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,176 @@
+<c:FragmentDefinition 
+    xmlns:c="sap.ui.core"
+    xmlns="sap.m" xmlns:t="sap.ui.table"
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data">
+    <Dialog id="idDialog" title="BOM Item" contentHeight="auto" contentWidth="auto" draggable="true" resizable="true" >
+        <HBox>
+            <VBox width="100%">
+
+            <!-- 예약 현황 Table -->
+                <t:Table
+                    id="idStatusTable"
+                    rows="{Dialog>/ZBA_FIT120Set/results}"
+                    selectionMode="None"
+                    
+                    paste="onPaste"
+                    ariaLabelledBy="title">
+                    <t:columns>
+                    <t:Column width="100%">
+                            <Label text="회사번호"></Label>
+                            <t:template>
+                                <Text text="{Dialog>Bukrs}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="회계연도"></Label>
+                            <t:template>
+                                <Text text="{Dialog>Gjahr}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="전표번호" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Belnr}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="Item번호" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Buzei}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="차대변구분자" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Shkzg}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="전기키" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Bschl}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="계정타입(1)" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Gltyp1}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="계정타입(2)" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Gltyp2}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="G/L 계정번호" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Saknr}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="G/L 계정명" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Glnm}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="금액" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Amount}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="적요" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Sgtxt}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="자재번호" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Matnr}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="자재명" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Matnm}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="고객번호" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Kunnr}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="벤더번호" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Vennr}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        
+                        <t:Column width="100%">
+                            <Label text="반제여부" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Aust}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="반제 회계연도" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Auggj}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="반제 전표번호" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Augbl}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="반제일" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Augdt}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="관련문서번호" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Docnr}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+
+
+                        
+                    </t:columns>
+                </t:Table>
+                </VBox>
+
+            <!-- 예약 현황 차트 -->
+        
+            </HBox>
+
+            <!-- Dialog 닫기 버튼 -->
+            <endButton> 
+                <Button text="Close" press="onClose" />
+            </endButton>
+            
+    </Dialog>
+</c:FragmentDefinition>

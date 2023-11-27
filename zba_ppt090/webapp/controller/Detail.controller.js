@@ -44,6 +44,19 @@ sap.ui.define(
           .getParameters()
           .listItem.getBindingContext()
           .getObject().Horder;
+        let kkey = oEvent.getParameters().listItem.getBindingContext().sPath;
+        this.getView()
+          .getModel()
+          .read(kkey + "/ZBA_PPT100Set", {
+            success: function (oReturn) {
+              debugger;
+              var oModel22 = new JSONModel(oReturn);
+              this.getView()
+                .byId("idFlattenedDataset")
+                .setModel(oModel22, "data");
+            }.bind(this),
+          });
+
         let aFilter = [];
 
         if (key) {

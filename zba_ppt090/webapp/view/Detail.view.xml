@@ -45,7 +45,7 @@
                                 <m:Table
 				id="productsTable2"
 				mode="SingleSelectMaster"
-				itemPress="onListItemPress2"
+				selectionChange="onListItemPress2"
 				inset="false"
 				items="{item>/results}"
 				class="sapFDynamicPageAlignContent"
@@ -146,15 +146,15 @@
 
 
         <viz:dataset>
-            <viz.data:FlattenedDataset id = "idFlattenedDataset" data="{item>/results}">
+            <viz.data:FlattenedDataset id = "idFlattenedDataset" data="{data>/results}">
                 <viz.data:dimensions>
-                <viz.data:DimensionDefinition name="생산 오더 번호" value="{item>Horder}" />
+                <viz.data:DimensionDefinition name="생산 오더 번호" value="{data>Horder}" />
                 </viz.data:dimensions>
                 <viz.data:measures>
                     
-                    <viz.data:MeasureDefinition name="총 생산 수량" value="{item>Qaunt}" />
-                    <viz.data:MeasureDefinition name="가용 생산 수량" value="{item>Rqaun}" />
-                    <viz.data:MeasureDefinition name="불용 생산 수량" value="{item>Tqaun}" />
+                    <viz.data:MeasureDefinition name="총 생산 수량" value="{data>Qaunt}" />
+                    <viz.data:MeasureDefinition name="가용 생산 수량" value="{data>Rqaun}" />
+                    <viz.data:MeasureDefinition name="불용 생산 수량" value="{data>Tqaun}" />
                 </viz.data:measures>
             </viz.data:FlattenedDataset>
         </viz:dataset>
