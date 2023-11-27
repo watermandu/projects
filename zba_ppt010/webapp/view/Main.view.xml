@@ -1,7 +1,8 @@
 <mvc:View controllerName="zbappt010.controller.Main"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    >
     <Page id="page" title="BOM 관리">
         <content>
             <HBox>
@@ -67,7 +68,7 @@
                         <Text text="자재유형" />
                     </Column>
                     <Column>
-                        <Text text="원부자재 단가" />
+                        <Text class = "cssText" text="원부자재 단가" />
                     </Column>
                     <Column>
                         <Text text="공정 비용" />
@@ -79,8 +80,9 @@
                         <Text text="통화키" />
                     </Column>
                     <Column>
-                        <Text text="삭제 플래그" />
+                        <Text text="사용 종료" />
                     </Column>
+                    
                 </columns>
                 <items>
                     <ColumnListItem>
@@ -88,13 +90,14 @@
                     <Text class="cssText" text="{Stlty}"/>
                     <Text text="{Matnr}"/>
                     <Text text="{Rttid}"/>
-                    <Text text="{Matnm}"/>
+                    <Text class = "cssText" text="{Matnm}"/>
                     <Text text="{Mtart}"/>
                     <Text text="{Rcost}"/>
-                    <Text text="{Pcost}"/>
+                    <Text text="{Rtcost}"/>
                     <Text text="{Ppnet}"/>
                     <Text text="{Waers}"/>
                     <Text text="{Delet}"/>
+                   
                     </cells>
                     </ColumnListItem>
                 </items>

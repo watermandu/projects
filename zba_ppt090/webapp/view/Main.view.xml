@@ -1,0 +1,119 @@
+<mvc:View controllerName="zbappt090.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" 
+    xmlns:f="sap.f"
+>
+    <f:DynamicPage id="dynamicPageId"
+				   toggleHeaderOnTitleClick="false">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="생산 오더 "/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+
+		<!-- DynamicPage Content -->
+		<f:content>
+			<Table
+				id="productsTable"
+				mode="SingleSelectMaster"
+				itemPress="onListItemPress"
+				inset="false"
+				items="{
+					path: '/ZBA_PPT090Set',
+					sorter: {
+						path: 'Horder'
+					}
+				}"
+				class="sapFDynamicPageAlignContent"
+				width="auto">
+				<headerToolbar>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<SearchField search="onSearch" width="17.5rem"/>
+				
+						<OverflowToolbarButton icon="sap-icon://sort" type="Transparent" press="onSort"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column >
+						<Text text="생산 오더 번호" />
+					</Column>
+
+                    <Column>
+						<Text text="생산 계획 번호" />
+					</Column>
+
+                    <Column >
+						<Text text="완제품 유형" />
+					</Column>   
+
+                    <Column >
+						<Text text="생산 시작일" />
+					</Column>
+
+                    <Column >
+						<Text text="생산 종료일" />
+					</Column>
+
+					 <Column >
+						<Text text="원자재 입고일" />
+					</Column>
+
+					 <Column >
+						<Text text="완제품 출고일" />
+					</Column>
+
+					 <Column >
+						<Text text="총 주문 수량" />
+					</Column>
+
+					<Column >
+						<Text text="오더 생성일" />
+					</Column>
+
+					<Column >
+						<Text text="생산 지시일" />
+					</Column>
+
+
+
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation">
+						<cells>
+							<ObjectIdentifier title="{Horder}" text="{Pdnam}유리"/>
+							<ObjectIdentifier title="{Hplan}"  />
+							<ObjectIdentifier title="{Pdnam}"  />
+							<ObjectIdentifier title="{Spdat}"  />
+							<ObjectIdentifier title="{Epdat}"  />
+							<ObjectIdentifier title="{Stdat}"  />
+							<ObjectIdentifier title="{Redat}"  />
+							<ObjectNumber
+									number="{
+										parts:[{path:'Hqaun'},{path:'Meins'}],
+										type: 'class sap.ui.model.type.Unit',
+										formatOptions: {showMeasure: false}
+									}"
+									/>
+							<ObjectIdentifier title="{Erdat}"  />
+							<ObjectIdentifier title="{Aedat}"  />
+						
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Accept"/>
+				<Button type="Reject" text="Reject"/>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</mvc:View>
