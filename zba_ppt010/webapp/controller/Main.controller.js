@@ -84,7 +84,7 @@ sap.ui.define([
                 }
               });
               // let oDialog = this.byId("idDialog"); // 구문법
-              let oDialog = sap.ui.getCore().byId("idDialog"); // 구문법
+              let oDialog = sap.ui.getCore().byId("idDialog"); // 신문법
                 if (!oDialog) {
                   
                   // 신문법

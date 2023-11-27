@@ -1,0 +1,177 @@
+<mvc:View xmlns:vk="sap.ui.vk" displayBlock="true" controllerName="zbappt090.controller.Detail" height="100%"
+		xmlns="sap.uxap"
+        xmlns:core="sap.ui.core"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:m="sap.m"
+		xmlns:f="sap.f"
+		xmlns:form="sap.ui.layout.form"
+        xmlns:viz="sap.viz.ui5.controls"
+        xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+        xmlns:viz.data="sap.viz.ui5.data"
+        >
+
+	<ObjectPageLayout id="ObjectPageLayout"
+					 showTitleInHeaderContent="true"
+					alwaysShowContentHeader="true"
+                    headerContentPinnable="false"
+                    showAnchorBar="false">
+				<headerTitle>
+					<ObjectPageDynamicHeaderTitle>
+						<heading>
+							<!-- <m:Title id="idHtitle"  text="{item>/results.Horder}" wrapping="true" class="sapUiSmallMarginEnd"/> -->
+						</heading>
+						<actions>
+						</actions>
+					</ObjectPageDynamicHeaderTitle>
+				</headerTitle>
+
+			
+
+		<sections>
+			<ObjectPageSection title="상세 생산 오더">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<form:SimpleForm
+								maxContainerCols="2"
+								editable="false"
+								layout="ResponsiveGridLayout"
+								labelSpanL="12"
+								labelSpanM="12"
+								emptySpanL="0"
+								emptySpanM="0"
+								columnsL="1"
+								columnsM="1">
+                                <m:Table
+				id="productsTable2"
+				mode="SingleSelectMaster"
+				itemPress="onListItemPress2"
+				inset="false"
+				items="{item>/results}"
+				class="sapFDynamicPageAlignContent"
+				width="auto">
+				<m:columns>
+
+                    <m:Column >
+						<m:Text text="생산 오더 번호" />
+					</m:Column>
+
+                     <m:Column >
+						<m:Text text="상세 번호" />
+					</m:Column>
+
+                    <m:Column >
+						<m:Text text="판매 오더 번호" />
+					</m:Column>
+
+                    <m:Column >
+						<m:Text text="자재 번호" />
+					</m:Column>
+
+                    <m:Column >
+						<m:Text text="총 비용" />
+					</m:Column>
+
+                    <m:Column >
+						<m:Text text="생산 수량" />
+					</m:Column>
+
+                    <m:Column >
+						<m:Text text="가용 생산 수량" />
+					</m:Column>
+
+                    <m:Column >
+						<m:Text text="불용 생산 수량" />
+					</m:Column>
+			
+				</m:columns>
+				<m:items>
+				<m:ColumnListItem type="Navigation">
+						<m:cells>
+							<m:ObjectIdentifier title="{item>Horder}" />
+							<m:ObjectIdentifier title="{item>Objid}"  />
+							<m:ObjectIdentifier title="{item>Vbeln}"  />
+							<m:ObjectIdentifier title="{item>Matnr}"  />
+							<m:ObjectNumber
+									number="{
+										parts:[{path:'item>Tnetp'},{path:'Unit'}],
+										type: 'class sap.ui.model.type.Unti',
+										formatOptions: {showMeasure: false}
+									}"
+									/>
+							<m:ObjectNumber
+									number="{
+										parts:[{path:'item>Qaunt'},{path:'Meins'}],
+										type: 'class sap.ui.model.type.Meins',
+										formatOptions: {showMeasure: false}
+									}"
+									/>
+                                    <m:ObjectNumber
+									number="{
+										parts:[{path:'item>Rqaun'},{path:'Meins'}],
+										type: 'class sap.ui.model.type.Meins',
+										formatOptions: {showMeasure: false}
+									}"
+									/>
+                                    <m:ObjectNumber
+									number="{
+										parts:[{path:'item>Tqaun'},{path:'Meins'}],
+										type: 'class sap.ui.model.type.Meins',
+										formatOptions: {showMeasure: false}
+									}"
+									/>
+							
+						</m:cells>
+					</m:ColumnListItem>
+				</m:items>
+			</m:Table>
+								
+							</form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+
+					<ObjectPageSubSection title="차트">
+					<viz:VizFrame id="idChart" width = "auto" height = "500px" vizType = "bar" 
+                        uiConfig="{'applicationSet': 'fiori'}"
+                        vizProperties="{
+                        'title' : { 'visible' : false , 'text' : 'Line Chart' }, 
+                        'legendGroup' : { layout : {position : 'right'}},
+                        'plotArea' : {
+                            drawingEffect : 'glossy' , 
+                            colorPaleete : ['#FF0000'],
+                            dataLabel : {visible : true}
+                        }
+                      }"
+                      selectData="onSelectData">
+
+
+        <viz:dataset>
+            <viz.data:FlattenedDataset id = "idFlattenedDataset" data="{item>/results}">
+                <viz.data:dimensions>
+                <viz.data:DimensionDefinition name="생산 오더 번호" value="{item>Horder}" />
+                </viz.data:dimensions>
+                <viz.data:measures>
+                    
+                    <viz.data:MeasureDefinition name="총 생산 수량" value="{item>Qaunt}" />
+                    <viz.data:MeasureDefinition name="가용 생산 수량" value="{item>Rqaun}" />
+                    <viz.data:MeasureDefinition name="불용 생산 수량" value="{item>Tqaun}" />
+                </viz.data:measures>
+            </viz.data:FlattenedDataset>
+        </viz:dataset>
+
+        <viz:feeds>
+            
+             <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="생산 오더 번호" />
+            
+            <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="총 생산 수량,가용 생산 수량,불용 생산 수량" />
+        
+        </viz:feeds>
+
+
+        </viz:VizFrame>					
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>

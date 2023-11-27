@@ -3,6 +3,8 @@
     xmlns="sap.m" 
     xmlns:f="sap.f"
 >
+<f:FlexibleColumnLayout id="flexibleColumnLayout"  backgroundDesign="Solid">
+<f:beginColumnPages>
     <f:DynamicPage id="dynamicPageId"
 				   toggleHeaderOnTitleClick="false">
 		<!-- DynamicPage Title -->
@@ -94,7 +96,7 @@
 							<ObjectNumber
 									number="{
 										parts:[{path:'Hqaun'},{path:'Meins'}],
-										type: 'class sap.ui.model.type.Unit',
+										type: 'class sap.ui.model.type.Meins',
 										formatOptions: {showMeasure: false}
 									}"
 									/>
@@ -116,4 +118,12 @@
 			</OverflowToolbar>
 		</f:footer>
 	</f:DynamicPage>
+</f:beginColumnPages>
+		<f:midColumnPages>
+			<mvc:XMLView id="detailView" viewName="zbappt090.view.Detail"/>
+		</f:midColumnPages>
+		<!-- <f:endColumnPages>
+			<mvc:XMLView id="EditView" viewName="zbappt090.view.Edit"/>
+		</f:endColumnPages> -->
+	</f:FlexibleColumnLayout>
 </mvc:View>
