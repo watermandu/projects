@@ -44,67 +44,36 @@ sap.ui.define(
           .getParameters()
           .listItem.getBindingContext()
           .getObject().Horder;
-        let kkey = oEvent.getParameters().listItem.getBindingContext().sPath;
-        this.getView()
+        //SELECT 선택한 자재번호
+        let select = oEvent
+          .getSource()
+          .getSelectedContexts()[0]
           .getModel()
-          .read(kkey + "/ZBA_PPT100Set", {
-            success: function (oReturn) {
-              debugger;
-              var oModel22 = new JSONModel(oReturn);
-              this.getView()
-                .byId("idFlattenedDataset")
-                .setModel(oModel22, "data");
-            }.bind(this),
-          });
+          .getData().results[
+          oEvent.getSource().getSelectedContextPaths()[0].slice(9)
+        ].Matnr;
 
         let aFilter = [];
 
-        if (key) {
+        if (select) {
           aFilter.push(
             new Filter({
-              path: "Horder",
+              path: "Matnr",
               operator: "Contains",
-              value1: key,
+              value1: select,
             })
           );
         }
 
         this.byId("idFlattenedDataset").getBinding("data").filter(aFilter);
       },
+
+      handleClose: function () {
+        this.getOwnerComponent()
+          .byId("Main")
+          .byId("flexibleColumnLayout")
+          .setLayout("OneColumn");
+      },
     });
   }
 );
-
-// // let odataModel = this.getOwnerComponent().getModel();
-// // let sPath = oEvent.getParameters().listItem.getBindingContextPath();
-// let oModel = this.getView().getModel();
-// let sPath = oModel.createKey("/ZBA_PPT090Set", {
-//   Horder: oParam.paramCust,
-// });
-
-// oModel.read(sPath, {
-//   urlParameters: {
-//     $expand: "ZBA_PPT100Set",
-//   },
-//   success: function (oReturn) {
-//     let oModel = new JSONModel(oReturn.ZBA_PPT100set);
-//     this.byId("productsTable2").setModel(oModel, "PPT100"); // 구버전
-//     // sap.ui.getCore().setModel(oModel, "PPT100"); //   신문법
-//   }.bind(this),
-//   error: function (oError) {
-//     alert("테이블 정보 갖고오기 실패");
-//   },
-// });
-
-// var queryMap = this.getView().byId("idAddr").getText()
-
-//     naver.maps.Service.geocode({
-//         query: queryMap
-//     }, function(status, response) {
-//         if (status !== naver.maps.Service.Status.OK) {
-//             return alert('Something wrong!');
-//         }
-//         var result = response.v2, // 검색 결과의 컨테이너
-//         items = result.addresses; // 검색 결과의 배열
-//         return this.onMap(items);
-// }.bind(this))

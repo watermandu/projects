@@ -15,6 +15,7 @@
 					alwaysShowContentHeader="true"
                     headerContentPinnable="false"
                     showAnchorBar="false">
+					
 				<headerTitle>
 					<ObjectPageDynamicHeaderTitle>
 						<heading>
@@ -47,9 +48,24 @@
 				mode="SingleSelectMaster"
 				selectionChange="onListItemPress2"
 				inset="false"
-				items="{item>/results}"
+				items="{
+					path: 'item>/results',
+					sorter: {
+						path: 'Objid'
+					}
+				}"
 				class="sapFDynamicPageAlignContent"
 				width="auto">
+
+				<m:headerToolbar>
+					<m:OverflowToolbar>
+						<m:ToolbarSpacer/>
+						<!-- <m:SearchField search="onSearch" width="17.5rem"/> -->
+						<m:OverflowToolbarButton icon="sap-icon://arrow-left" type="Transparent" press="handleClose"/>
+					</m:OverflowToolbar>
+				</m:headerToolbar>
+
+
 				<m:columns>
 
                     <m:Column >
@@ -146,15 +162,15 @@
 
 
         <viz:dataset>
-            <viz.data:FlattenedDataset id = "idFlattenedDataset" data="{data>/results}">
+            <viz.data:FlattenedDataset id = "idFlattenedDataset" data="{item>/results}">
                 <viz.data:dimensions>
-                <viz.data:DimensionDefinition name="생산 오더 번호" value="{data>Horder}" />
+                <viz.data:DimensionDefinition name="생산 오더 번호" value="{item>Horder}" />
                 </viz.data:dimensions>
                 <viz.data:measures>
                     
-                    <viz.data:MeasureDefinition name="총 생산 수량" value="{data>Qaunt}" />
-                    <viz.data:MeasureDefinition name="가용 생산 수량" value="{data>Rqaun}" />
-                    <viz.data:MeasureDefinition name="불용 생산 수량" value="{data>Tqaun}" />
+                    <viz.data:MeasureDefinition name="총 생산 수량" value="{item>Qaunt}" />
+                    <viz.data:MeasureDefinition name="가용 생산 수량" value="{item>Rqaun}" />
+                    <viz.data:MeasureDefinition name="불용 생산 수량" value="{item>Tqaun}" />
                 </viz.data:measures>
             </viz.data:FlattenedDataset>
         </viz:dataset>
@@ -169,9 +185,9 @@
 
 
         </viz:VizFrame>					
-					</ObjectPageSubSection>
-				</subSections>
-			</ObjectPageSection>
-		</sections>
-	</ObjectPageLayout>
+					</ObjectPageSubSection>			
+				</subSections>				
+			</ObjectPageSection>			
+		</sections>		
+	</ObjectPageLayout>	
 </mvc:View>

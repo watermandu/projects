@@ -37,24 +37,6 @@ sap.ui.define(
           .byId("flexibleColumnLayout")
           .setLayout("TwoColumnsMidExpanded");
 
-        // read key를 위한 변수
-        // let odataModel = this.getOwnerComponent().getModel();
-        // let sPath = oEvent.getParameters().listItem.getBindingContextPath();
-
-        // odataModel.read(sPath, {
-        //   urlParameters: {
-        //     $expand: "ZBA_PPT100Set",
-        //   },
-        //   success: function (oReturn) {
-        //     let oModel = new JSONModel(oReturn);
-        //     // this.byId("productsTable2").setModel(oModel, "PPT100"); // 구버전
-        //     sap.ui.getCore().setModel(oModel, "PPT100"); //   신문법
-        //   }.bind(this),
-        //   error: function (oError) {
-        //     alert("테이블 정보 갖고오기 실패");
-        //   },
-        // });
-
         var oRouter = this.getOwnerComponent().getRouter();
         var getParam = oEvent
           .getParameters()
@@ -64,6 +46,24 @@ sap.ui.define(
         oRouter.navTo("RouteDetail", {
           paramCust: getParam,
         });
+      },
+
+      onSearch: function () {
+        let value = this.byId("serch").getValue();
+
+        let aFilter = [];
+
+        if (value) {
+          aFilter.push(
+            new Filter({
+              path: "Horder",
+              operator: "Contains",
+              value1: value,
+            })
+          );
+        }
+
+        this.byId("productsTable").getBinding("items").filter(aFilter);
       },
     });
   }
