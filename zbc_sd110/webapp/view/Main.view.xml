@@ -1,0 +1,112 @@
+<mvc:View controllerName="zbcsd110.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    >
+   <Page id="page" >
+        <content>
+            <HBox>
+            <VBox width="100%">
+            <Table id="idsdt110Table"
+                    mode="SingleSelectMaster"
+                    noDataText="데이터가 없습니다."
+                    sticky="HeaderToolbar,ColumnHeaders"
+                    inset="false"
+                    items="{
+                        path:'/ZBC_SDT010Set',
+                        sorter: {
+						path: 'CustomCd'
+					}
+                        }"
+                    class="sapFDynamicPageAlignContent"
+                    width="auto"
+                    selectionChange="onSelectionChange"
+                    >
+                <headerToolbar>
+                    <Toolbar>
+                        <ToolbarSpacer />
+                         <Label text="고객코드" />
+                      <ComboBox
+                        id="idcomboBox1"
+                        items="{/ZBC_SDT010Set}"
+                        width="15em">
+                        <core:ListItem text="{CustomCd}"/>
+                    </ComboBox>
+                    <Label text="기업명" />
+                      <ComboBox 
+                        id="idcomboBox2"
+                        items="{/ZBC_SDT010Set}"
+                        width="15em">
+                        <core:ListItem text="{BussNm}"/>
+                    </ComboBox>
+                    <Button width="5em" text="Search" type="Emphasized" press="onSearch"/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns >
+                    <Column >
+                        <Text text="고객코드"  />
+                    </Column>
+                    <Column>
+                        <Text text="사업자등록번호" />
+                    </Column>
+                    <Column>
+                        <Text text="기업명" />
+                    </Column>
+                    <Column>
+                        <Text text="가입일자" />
+                    </Column>
+                    <Column >
+                        <Text text="은행코드" />
+                    </Column>
+                    <Column>
+                        <Text text="은행명" />
+                    </Column>
+                    <Column>
+                        <Text text="예금주" />
+                    </Column>
+                    <Column>
+                        <Text text="계좌번호" />
+                    </Column>
+                    <Column>
+                        <Text text="주소" />
+                    </Column>
+                    <Column>
+                        <Text text="전화번호" />
+                    </Column>
+                    <Column>
+                        <Text text="email" />
+                    </Column>
+                    <Column>
+                        <Text text="지불정보" />
+                    </Column>
+                    <Column>
+                        <Text text="FAX" />
+                    </Column>
+                    
+                </columns>
+                <items>
+                    <ColumnListItem>
+                    <cells>
+                    <Text text="{CustomCd}"/>
+                    <Text text="{BussNb}"/>
+                    <Text text="{BussNm}"/>
+                    <Text text="{JoinDt}"/>
+                    <Text text="{BankNb}"/>
+                    <Text text="{BankNm}"/>
+                    <Text text="{AccountHolder}"/>
+                    <Text text="{AccountNb}"/>
+                    <Text text="{Addr}"/>
+                    <Text text="{TelNb}"/>
+                    <Text text="{Email}"/>
+                    <Text text="{PayTy}"/>
+                    <Text text="{FaxNb}"/>
+                    </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+            </HBox>
+
+        </content>
+    </Page>
+</mvc:View>
