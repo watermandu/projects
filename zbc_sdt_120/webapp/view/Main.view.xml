@@ -1,0 +1,125 @@
+<mvc:View controllerName="zbcsdt120.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    >
+    <Page id="page" title="{i18n>title}">
+      <content>
+            <HBox>
+            <VBox width="100%">
+            <Table id="idSDT120Table"
+                    mode="SingleSelectMaster"
+                    noDataText="데이터가 없습니다."
+                    sticky="HeaderToolbar,ColumnHeaders"
+                    inset="false"
+                    items="{
+                        path:'/ZBC_SDT060Set'
+                        }"
+                    class="sapFDynamicPageAlignContent"
+                    width="auto"
+                    selectionChange="onSelectionChange"
+                    >
+                <headerToolbar>
+                    <Toolbar>
+                        <ToolbarSpacer />
+                        <Label text="출하코드" />
+                      <ComboBox
+                        id="idcomboBox"
+                        items="{/ZBC_SDT060Set}"
+                        width="15em">
+                        <core:ListItem text="{ShippingCd}"/>
+                    </ComboBox>
+                    <Button width="5em" text="Search" type="Emphasized" press="onSearch"/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns >
+                    <Column >
+                        <Text text="출하코드"  />
+                    </Column>
+                    <Column>
+                        <Text text="고객코드" />
+                    </Column>
+                    <Column>
+                        <Text text="판매오더코드 " />
+                    </Column>
+                    <Column>
+                        <Text text="자재문서번호" />
+                    </Column>
+                    <Column >
+                        <Text text="운송지점" />
+                    </Column>
+                    <Column>
+                        <Text text="운송업자 Data element" />
+                    </Column>
+                    <Column>
+                        <Text text="출하품목(총)중량" />
+                    </Column>
+                    <Column>
+                        <Text text="Base Unit" />
+                    </Column>
+                    <Column>
+                        <Text text="상태플래그" />
+                    </Column>
+                    <Column>
+                        <Text text="주문기한" />
+                    </Column>
+                    <Column>
+                        <Text text="운송기한" />
+                    </Column>
+                    <Column>
+                        <Text text="운송비용" />
+                    </Column>
+
+                    <Column>
+                        <Text text="Currency" />
+                    </Column>
+
+                    <Column>
+                        <Text text="item total amount" />
+                    </Column>
+
+                    <Column>
+                        <Text text="오더총수량 Data element" />
+                    </Column>
+
+                    <Column>
+                        <Text text="단위" />
+                    </Column>
+
+                    <Column>
+                        <Text text="Base Unit" />
+                    </Column>
+
+
+                    
+                </columns>
+                <items>
+                    <ColumnListItem>
+                    <cells>
+                    <Text text="{ShippingCd}"/>
+                    <Text text="{CustomCd}"/>
+                    <Text text="{SoCd}"/>
+                    <Text text="{MatDocNb}"/>
+                    <Text text="{TpPoint}"/>
+                    <Text text="{Transporter}"/>
+                    <Text text="{ShipIttw}"/>
+                    <Text text="{WeightUnit}"/>
+                    <Text text="{XStat}"/>
+                    <Text text="{SoLimDt}"/>
+                    <Text text="{TpLimDt}"/>
+                    <Text text="{TpCo}"/>
+                    <Text text="{Currency}"/>
+                    <Text text="{ShipItta}"/>
+                    <Text text="{TotalQuan}"/>
+                    <Text text="{Unit}"/>
+                    <Text text="{Quantity}"/>
+                    </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+            </HBox>
+
+        </content>
+    </Page>
+</mvc:View>

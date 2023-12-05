@@ -72,7 +72,7 @@
 						<m:Text text="생산 오더 번호" />
 					</m:Column>
 
-                     <m:Column >
+                    <m:Column >
 						<m:Text text="상세 번호" />
 					</m:Column>
 
@@ -147,7 +147,7 @@
 					</ObjectPageSubSection>
 
 					<ObjectPageSubSection title="차트">
-					<viz:VizFrame id="idChart" width = "auto" height = "500px" vizType = "bar" 
+					<viz:VizFrame id="idChart" width = "auto" height = "500px" vizType = "column" 
                         uiConfig="{'applicationSet': 'fiori'}"
                         vizProperties="{
                         'title' : { 'visible' : false , 'text' : 'Line Chart' }, 
@@ -177,7 +177,7 @@
 
         <viz:feeds>
             
-             <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="생산 오더 번호" />
+            <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="생산 오더 번호" />
             
             <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="총 생산 수량,가용 생산 수량,불용 생산 수량" />
         

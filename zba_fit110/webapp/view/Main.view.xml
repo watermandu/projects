@@ -94,7 +94,7 @@
                     <Text text="{Stblg}"/>
                     <Text text="{Stgrd}"/>
 
-                   
+                  
                     </cells>
                     </ColumnListItem>
                 </items>

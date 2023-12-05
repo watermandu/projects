@@ -1,0 +1,117 @@
+<c:FragmentDefinition 
+    xmlns:c="sap.ui.core"
+    xmlns="sap.m" xmlns:t="sap.ui.table"
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data">
+    <Dialog id="idDialog" title="BOM Item" contentHeight="auto" contentWidth="auto" draggable="true" resizable="true" >
+        <HBox>
+            <VBox width="100%">
+
+            <!-- 예약 현황 Table -->
+                <t:Table
+                    id="idStatusTable"
+                    rows="{Dialog>/ZBC_SDT070Set/results}"
+                    selectionMode="None"
+                    
+                    paste="onPaste"
+                    ariaLabelledBy="title">
+                    <t:columns>
+                    <t:Column width="100%">
+                            <Label text="출하아이템코드"></Label>
+                            <t:template>
+                                <Text text="{Dialog>ShippingItemCd}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="출하코드"></Label>
+                            <t:template>
+                                <Text text="{Dialog>ShippingCd}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="자재코드" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>MatCd}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="자재명" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>MatNm}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="저장위치코드" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>StrCd}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="가격코드" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>PriceCd}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="할인명목" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>DcntNm}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="Currency" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Currency}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100%">
+                            <Label text="출하품목중량" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>ShipItw}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="중량 단위" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>WeightUnit}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="수량" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Quant}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="수량" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>ShipQu}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="100%">
+                            <Label text="단위" ></Label>
+                            <t:template>
+                                <Text text="{Dialog>Unit}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+
+                    </t:columns>
+                </t:Table>
+                </VBox>
+
+            <!-- 예약 현황 차트 -->
+        
+            </HBox>
+
+            <!-- Dialog 닫기 버튼 -->
+            <endButton> 
+                <Button text="Close" press="onClose" />
+            </endButton>
+            
+    </Dialog>
+</c:FragmentDefinition>

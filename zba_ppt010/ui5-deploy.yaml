@@ -16,9 +16,9 @@ builder:
         target:
           url: http://sapmento.mento.co.kr:8001
         app:
-          name: ZBA_PP010UI5
-          description: UI5_PP
+          name: ZBA_PP_010_UI5
+          description: UI5
           package: ZBA
-          transport: MTSK900237
+          transport: REPLACE_WITH_TRANSPORT
         exclude:
           - /test/

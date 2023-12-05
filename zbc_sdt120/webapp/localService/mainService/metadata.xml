@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZBC_SDT120_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZBC_SDT100" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ReturnCd"/>
+                </Key>
+                <Property Name="ReturnCd" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="return order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BillNb" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="청구문서번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PriceCd" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="가격코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReturnDt" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="반품일자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TrtPr" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="총반품금액" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ZBC_SDT110Set" Relationship="ZBC_SDT120_SRV.HeaderToItem" FromRole="FromRole_HeaderToItem" ToRole="ToRole_HeaderToItem"/>
+            </EntityType>
+            <EntityType Name="ZBC_SDT110" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ReturnItemCd"/>
+                    <PropertyRef Name="ReturnCd"/>
+                </Key>
+                <Property Name="ReturnItemCd" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="반품오더아이템" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReturnCd" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="return order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PriceCd" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="가격코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MatCd" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="자재코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReturnQu" Type="Edm.Decimal" Nullable="false" Precision="8" Scale="0" sap:unicode="false" sap:label="수량" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReturnPr" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="cost" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="단위" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+            </EntityType>
+            <Association Name="HeaderToItem" sap:content-version="1">
+                <End Type="ZBC_SDT120_SRV.ZBC_SDT100" Multiplicity="1" Role="FromRole_HeaderToItem"/>
+                <End Type="ZBC_SDT120_SRV.ZBC_SDT110" Multiplicity="*" Role="ToRole_HeaderToItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_HeaderToItem">
+                        <PropertyRef Name="ReturnCd"/>
+                    </Principal>
+                    <Dependent Role="ToRole_HeaderToItem">
+                        <PropertyRef Name="ReturnCd"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZBC_SDT120_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZBC_SDT100Set" EntityType="ZBC_SDT120_SRV.ZBC_SDT100" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZBC_SDT110Set" EntityType="ZBC_SDT120_SRV.ZBC_SDT110" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="HeaderToItemSet" Association="ZBC_SDT120_SRV.HeaderToItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZBC_SDT100Set" Role="FromRole_HeaderToItem"/>
+                    <End EntitySet="ZBC_SDT110Set" Role="ToRole_HeaderToItem"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://sapmento.mento.co.kr:8001/sap/opu/odata/sap/ZBC_SDT120_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://sapmento.mento.co.kr:8001/sap/opu/odata/sap/ZBC_SDT120_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

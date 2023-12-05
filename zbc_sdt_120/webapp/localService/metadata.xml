@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZBC_SDT120_SRV_01" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZBC_SDT060" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ShippingCd"/>
+                </Key>
+                <Property Name="ShippingCd" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="출하코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomCd" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="고객코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SoCd" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="판매오더코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MatDocNb" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="자재문서번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TpPoint" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="운송지점" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Transporter" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="운송업자 Data element" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipIttw" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="출하품목(총)중량" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WeightUnit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="XStat" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="상태플래그" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SoLimDt" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="주문기한" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TpLimDt" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="운송기한" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TpCo" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:unit="Currency" sap:label="운송비용" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="ShipItta" Type="Edm.Decimal" Nullable="false" Precision="8" Scale="0" sap:unicode="false" sap:unit="Unit" sap:label="item total amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TotalQuan" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="오더총수량 Data element" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="단위" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Quantity" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <NavigationProperty Name="ZBC_SDT070Set" Relationship="ZBC_SDT120_SRV_01.HeaderToItem" FromRole="FromRole_HeaderToItem" ToRole="ToRole_HeaderToItem"/>
+            </EntityType>
+            <EntityType Name="ZBC_SDT070" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ShippingItemCd"/>
+                    <PropertyRef Name="ShippingCd"/>
+                </Key>
+                <Property Name="ShippingItemCd" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="출하아이템코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShippingCd" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="출하코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MatCd" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="자재코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MatNm" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="자재명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StrCd" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="저장위치코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PriceCd" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="가격코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DcntNm" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="할인명목" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SalesPr" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="판매단가" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="ShipItw" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="출하품목중량" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WeightUnit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="중량 단위" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Quant" Type="Edm.Decimal" Nullable="false" Precision="8" Scale="0" sap:unicode="false" sap:unit="Unit" sap:label="수량" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipQu" Type="Edm.Decimal" Nullable="false" Precision="8" Scale="0" sap:unicode="false" sap:unit="Unit" sap:label="수량" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="단위" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+            </EntityType>
+            <Association Name="HeaderToItem" sap:content-version="1">
+                <End Type="ZBC_SDT120_SRV_01.ZBC_SDT060" Multiplicity="1" Role="FromRole_HeaderToItem"/>
+                <End Type="ZBC_SDT120_SRV_01.ZBC_SDT070" Multiplicity="*" Role="ToRole_HeaderToItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_HeaderToItem">
+                        <PropertyRef Name="ShippingCd"/>
+                    </Principal>
+                    <Dependent Role="ToRole_HeaderToItem">
+                        <PropertyRef Name="ShippingCd"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZBC_SDT120_SRV_01_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZBC_SDT060Set" EntityType="ZBC_SDT120_SRV_01.ZBC_SDT060" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZBC_SDT070Set" EntityType="ZBC_SDT120_SRV_01.ZBC_SDT070" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="HeaderToItemSet" Association="ZBC_SDT120_SRV_01.HeaderToItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZBC_SDT060Set" Role="FromRole_HeaderToItem"/>
+                    <End EntitySet="ZBC_SDT070Set" Role="ToRole_HeaderToItem"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://sapmento.mento.co.kr:8001/sap/opu/odata/sap/ZBC_SDT120_SRV_01/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://sapmento.mento.co.kr:8001/sap/opu/odata/sap/ZBC_SDT120_SRV_01/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

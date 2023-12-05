@@ -3,7 +3,7 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     >
-    <Page id="page" title="BOM 관리">
+    <Page id="page" title="BOM 관리123">
         <content>
             <HBox>
                 <VBox class="sapUiSmallMargin" width="25%">
@@ -49,6 +49,8 @@
                         <Title text="BOM Header" level="H2"/>
                         <ToolbarSpacer />
                         <Button text="---" press="onDetail" />
+                        <Link text="test" href="http://sapmento.mento.co.kr:8001/sap/bc/bsp/sap/zba_pp010ui5/index.html"></Link>
+                        <Button   /> 
                     </Toolbar>
                 </headerToolbar>
                 <columns>
