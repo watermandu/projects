@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZBC_SDT110_SRV_01" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZBC_SDT010" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CustomCd"/>
+                </Key>
+                <Property Name="CustomCd" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="고객코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BussNb" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="사업자등록번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BussNm" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="기업명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="JoinDt" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="가입일자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BankNb" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="은행코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BankNm" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="은행명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccountHolder" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="예금주" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccountNb" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="계좌번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Addr" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="주소" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TelNb" Type="Edm.String" Nullable="false" MaxLength="17" sap:unicode="false" sap:label="전화번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="email" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="단위" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="PayTy" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="지불정보" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FaxNb" Type="Edm.String" Nullable="false" MaxLength="21" sap:unicode="false" sap:label="FAX" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZBC_SDT110_SRV_01_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZBC_SDT010Set" EntityType="ZBC_SDT110_SRV_01.ZBC_SDT010" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://sapmento.mento.co.kr:8001/sap/opu/odata/sap/ZBC_SDT110_SRV_01/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://sapmento.mento.co.kr:8001/sap/opu/odata/sap/ZBC_SDT110_SRV_01/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
